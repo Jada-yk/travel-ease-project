@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/hotel.css">
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <title>Complete Your Booking</title>
+</head>
+
+<body class="stay-theme">
+
+    <header>
+
+        <nav style="background-color:#1669ed;">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="tripCo.html"></a>
+                <img src="/images/logo.png" alt="Travel Ease Logo" class="logo-img">
+                <span class="logo-text">
+                    Travel Ease
+                </span>
+                </a>
+            </div>
+
+            <!-- NAVIGATION -->
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-items">
+                    <a href="index.html" class="nav-link">
+                        Flights
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="hotel.html" class="nav-link active">
+                        Hotels
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="attraction.html" class="nav-link">
+                        Attractions
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/car.html" class="nav-link">
+                        Cars servoces
+                    </a>
+                </li>
+
+                <!-- SIGN IN / REGISTER -->
+                <li class="nav-items">
+                    <button class="signin-btn" id="sign-in-button" type="button">
+                        Sign in / Register
+                    </button>
+                </li>
+            </ul>
+
+            <!-- HAMBURGER -->
+            <div class="menu-part" id="menu-button">
+                <i class="fa-solid fa-bars menu-bar" id="open-menu"></i>
+                <i class="fa-solid fa-xmark close-menu" id="close-menu"></i>
+            </div>
+
+        </nav>
+
+        <!-- BACKDROP -->
+        <div class="backdrop" id="backdrop"></div>
+
+    </header>
+
+
+    <section class="payment-page">
+
+        <a href="#" class="back-link" id="payment-back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to hotel details
+        </a>
+
+        <div class="payment-layout">
+
+            <!-- BOOKING SUMMARY -->
+            <aside class="payment-summary">
+
+                <div class="payment-hotel-thumb">
+                    <img id="summary-hotel-img" src="" alt="">
+                </div>
+
+                <h1 class="payment-hotel-name" id="summary-hotel-name"></h1>
+                <p class="payment-hotel-address" id="summary-hotel-address"></p>
+
+                <div class="payment-line">
+                    <span>Check-in</span>
+                    <span id="summary-checkin"></span>
+                </div>
+                <div class="payment-line">
+                    <span>Check-out</span>
+                    <span id="summary-checkout"></span>
+                </div>
+                <div class="payment-line">
+                    <span>Guests</span>
+                    <span id="summary-guests"></span>
+                </div>
+                <div class="payment-line">
+                    <span id="summary-rate-label">Rate x nights</span>
+                    <span id="summary-rate-value"></span>
+                </div>
+                <div class="payment-line payment-total">
+                    <span>Total</span>
+                    <span id="summary-total"></span>
+                </div>
+
+            </aside>
+
+
+            <!-- PAYMENT / TICKET PANEL -->
+            <div class="payment-panel">
+
+                <div class="payment-steps">
+                    <div class="payment-step active" id="step-indicator-1">
+                        <span class="step-dot">1</span>
+                        <span>Pay the agent</span>
+                    </div>
+                    <div class="payment-step-sep"></div>
+                    <div class="payment-step" id="step-indicator-2">
+                        <span class="step-dot">2</span>
+                        <span>Get your ticket</span>
+                    </div>
+                </div>
+
+                <!-- STEP 1: PAYMENT INSTRUCTIONS -->
+                <div class="payment-panel-body active" id="payment-step-1">
+
+                    <div class="connector-note">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <p>
+                            <strong>Travel Ease doesn't take payment for stays.</strong>
+                            We connect you with the booking agent for this hotel — you pay
+                            the agent directly, they confirm your room, and we hand you a
+                            ticket for your records.
+                        </p>
+                    </div>
+
+                    <div class="agent-card">
+                        <div class="agent-card-info">
+                            <div class="agent-label">Booking agent</div>
+                            <div class="agent-name" id="agent-name-text"></div>
+                            <div class="agent-phone" id="agent-phone-text"></div>
+                        </div>
+                        <a href="#" class="agent-whatsapp-btn" id="agent-whatsapp-link" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Message agent
+                        </a>
+                    </div>
+
+                    <div class="payment-reference">
+                        <span>Quote this booking reference when you pay</span>
+                        <strong id="booking-ref-text"></strong>
+                    </div>
+
+                    <div class="payment-form-group">
+                        <label for="guest-name-input">Full name</label>
+                        <input type="text" id="guest-name-input" placeholder="Name on the reservation" autocomplete="name">
+                    </div>
+
+                    <div class="payment-form-group">
+                        <label for="guest-contact-input">Your phone number or email</label>
+                        <input type="text" id="guest-contact-input" placeholder="So the agent can reach you" autocomplete="tel">
+                    </div>
+                    <p class="payment-form-hint">
+                        We only use this to print it on your ticket and share it with the agent.
+                    </p>
+
+                    <button type="button" class="payment-confirm-btn" id="confirm-payment-btn">
+                        I've paid the agent — continue
+                    </button>
+
+                </div>
+
+                <!-- STEP 2: TICKET -->
+                <div class="payment-panel-body" id="payment-step-2">
+
+                    <div class="ticket-success">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Your ticket is ready</span>
+                    </div>
+
+                    <div class="ticket-frame">
+                        <canvas id="ticket-canvas" width="900" height="420"></canvas>
+                    </div>
+
+                    <div class="ticket-actions">
+                        <button type="button" class="ticket-download-btn" id="download-ticket-btn">
+                            <i class="fa-solid fa-download"></i>
+                            Download ticket
+                        </button>
+                        <a href="#" class="ticket-whatsapp-btn" id="send-ticket-whatsapp" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            Send to agent
+                        </a>
+                    </div>
+
+                    <p class="ticket-fineprint">
+                        Download the ticket image, then attach it in the WhatsApp chat that opens
+                        so the agent has proof of payment alongside your booking reference.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="robot">
+
+        <div class="travel-bot">
+
+            <div class="bot-tooltip">
+                Need help?
+            </div>
+
+            <button class="bot-button" id="botButton">
+                <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+            </button>
+
+        </div>
+
+
+        <div class="bot-popup" id="botPopup">
+
+            <div class="bot-card">
+
+                <div class="bot-header">
+
+                    <div class="bot-title">
+
+                        <div class="small-bot">
+                            <img src="/images/robot.jpg" alt="">
+                        </div>
+
+                        <div>
+                            <h3>Travel Ease</h3>
+                            <span>Travel Assistant</span>
+                        </div>
+
+                    </div>
+
+                    <button class="bot-close" id="botClose">
+                        &times;
+                    </button>
+
+                </div>
+
+                <div class="bot-page" id="questionsPage">
+
+                    <div class="bot-greeting">
+                        <h4>Hi there!</h4>
+                        <p>
+                            What would you like to know?
+                        </p>
+                    </div>
+
+                    <div class="question-list">
+
+                        <button
+                            class="question-btn"
+                            data-question="Why am I paying an agent instead of Travel Ease?"
+                            data-answer="Travel Ease is a booking platform, not a payment processor for stays. We connect you with the hotel's booking agent, you pay them directly, and we give you a ticket confirming your reservation details once you've paid."
+                        >
+                            <span>Why do I pay an agent, not Travel Ease?</span>
+                            <b>›</b>
+                        </button>
+
+                        <button
+                            class="question-btn"
+                            data-question="What if the agent doesn't respond?"
+                            data-answer="Keep your booking reference and ticket handy and try reaching the agent again on WhatsApp. If you're still unable to reach them, contact Travel Ease support with your booking reference."
+                        >
+                            <span>What if the agent doesn't respond?</span>
+                            <b>›</b>
+                        </button>
+
+                        <button
+                            class="question-btn"
+                            data-question="Where is my ticket saved?"
+                            data-answer="Your ticket downloads straight to your device as an image once you confirm payment, so you can keep a copy and share it with the agent or hotel."
+                        >
+                            <span>Where is my ticket saved?</span>
+                            <b>›</b>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="bot-page answer-page" id="answerPage">
+
+                    <button class="back-button" id="backButton">
+                        ← Back
+                    </button>
+
+                    <div class="answer-content">
+
+                        <div class="answer-icon">
+                            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+                        </div>
+
+                        <p class="answer-question" id="answerQuestion"></p>
+
+                        <div class="answer-line"></div>
+
+                        <p class="answer-text" id="answerText"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/hotel-data.js"></script>
+    <script src="/js/hotel.js"></script>
+    <script src="/js/Payment.js"></script>
+    <script src="/js/robot.js"></script>
+
+</body>
+
+</html>

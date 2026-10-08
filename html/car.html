@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEase - Car Rentals Across Nigeria</title>
+ 
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="stylesheet" href="/css/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/car.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+</head>
+
+<body>
+    <div id="backdrop"></div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-visual">
+            <div class="header-track" id="headerTrack"></div>
+            <div class="header-overlay"></div>
+        </div>
+
+        <nav class="navbar">
+            <a href="/html/tripCo.html" class="logo" aria-label="TravelEase home">
+                <img src="/images/logo.png" alt="" class="logo-img">
+                <span class="logo-text">Travel <span>Ease</span></span>
+            </a>
+
+            <ul class="nav-list" id="nav-menu">
+                <li><a href="/html/index.html" class="nav-link">Flights</a></li>
+                <li><a href="/html/hotel.html" class="nav-link">Hotels</a></li>
+                <li><a href="/html/attraction.html" class="nav-link">Attractions</a></li>
+                <li><a href="/html/car.html" class="nav-link active">Car services</a></li>
+
+                <li class="mobile-signin">
+                    <button class="signin-btn signin-trigger" id="signInButtonMobile">
+                        Sign in / Register
+                    </button>
+                </li>
+
+                <span class="nav-actions">
+                    <button class="signin-btn signin-trigger" id="signInButton">
+                        Sign in / Register
+                    </button>
+                </span>
+
+                <button class="menu-part" id="menu-button" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-bars" id="open-menu"></i>
+                    <i class="fa-solid fa-xmark" id="close-menu" style="color:#1669ed;"></i>
+                </button>
+            </ul>
+
+        </nav>
+
+
+        <!-- Only a small hero message remains in the header -->
+        <div class="header-hero">
+            <span class="hero-kicker">TRAVELEASE CAR SERVICES</span>
+            <h1>Rent the right car wherever you land in Nigeria.</h1>
+        </div>
+
+        <div class="slider-dots" id="sliderDots" aria-label="Header image controls"></div>
+    </header>
+
+    <main class="container">
+        <!-- SEARCH -->
+        <section class="search-card">
+            <div class="search-top">
+                <div>
+                    <span class="section-kicker">CAR RENTALS</span>
+                    <h2>Find a car for your trip</h2>
+                </div>
+
+                <button class="my-bookings-btn" id="myBookingsBtn" type="button">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    My bookings
+                </button>
+            </div>
+
+            <div class="mode-toggle" id="modeToggle">
+                <button type="button" class="mode-btn active" data-mode="rental">
+                    <i class="fa-solid fa-car"></i>
+                    Rent for your trip
+                </button>
+                <button type="button" class="mode-btn" data-mode="ride">
+                    <i class="fa-solid fa-taxi"></i>
+                    One-way ride to a hotel
+                </button>
+            </div>
+
+            <div class="search-inputs">
+                <!-- PICKUP CITY CUSTOM DROPDOWN -->
+                <div class="input-field custom-dropdown" id="locationDropdown">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="hidden" id="locationInput">
+                    <button type="button" class="custom-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox">
+                        <span class="custom-dropdown-text">Pickup city or airport...</span>
+                        <i class="fa-solid fa-chevron-down custom-dropdown-arrow"></i>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                        <button type="button" data-value="Lagos" role="option">Lagos – Murtala Muhammed Intl
+                            (LOS)</button>
+                        <button type="button" data-value="Abuja" role="option">Abuja – Nnamdi Azikiwe Intl
+                            (ABV)</button>
+                        <button type="button" data-value="Port Harcourt" role="option">Port Harcourt (PHC)</button>
+                        <button type="button" data-value="Kano" role="option">Kano (KAN)</button>
+                        <button type="button" data-value="Enugu" role="option">Enugu (ENU)</button>
+                        <button type="button" data-value="Ibadan" role="option">Ibadan</button>
+                        <button type="button" data-value="Kaduna" role="option">Kaduna</button>
+                        <button type="button" data-value="Benin City" role="option">Benin City</button>
+                        <button type="button" data-value="Uyo" role="option">Uyo</button>
+                        <button type="button" data-value="Owerri" role="option">Owerri</button>
+                    </div>
+                </div>
+
+                <!-- DESTINATION CUSTOM DROPDOWN -->
+                <div class="input-field destination custom-dropdown hidden" id="destinationField">
+                    <i class="fa-solid fa-hotel"></i>
+                    <input type="hidden" id="destinationInput">
+                    <button type="button" class="custom-dropdown-trigger" aria-expanded="false" aria-haspopup="listbox">
+                        <span class="custom-dropdown-text">Drop-off: hotel or area...</span>
+                        <i class="fa-solid fa-chevron-down custom-dropdown-arrow"></i>
+                    </button>
+                    <div class="custom-dropdown-menu" role="listbox">
+                        <button type="button" data-value="Eko Hotel, Victoria Island" role="option">Eko Hotel, Victoria
+                            Island</button>
+                        <button type="button" data-value="Radisson Blu, Ikeja" role="option">Radisson Blu,
+                            Ikeja</button>
+                        <button type="button" data-value="Transcorp Hilton, Abuja" role="option">Transcorp Hilton,
+                            Abuja</button>
+                        <button type="button" data-value="Novotel, Port Harcourt" role="option">Novotel, Port
+                            Harcourt</button>
+                        <button type="button" data-value="Tinapa, Calabar" role="option">Tinapa, Calabar</button>
+                        <button type="button" data-value="Other hotel or address" role="option">Other hotel or
+                            address</button>
+                    </div>
+                </div>
+
+                <label class="input-field date-field" id="datesField">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input type="date" id="pickupDate" aria-label="Pickup date">
+                    <span class="date-divider">•</span>
+                    <span class="return-preview" id="returnPreview"></span>
+
+                    <div class="days-stepper">
+                        <button type="button" class="days-btn" id="daysMinus">−</button>
+                        <span><strong id="daysCount">3</strong> days</span>
+                        <button type="button" class="days-btn" id="daysPlus">+</button>
+                    </div>
+                </label>
+
+                <button class="search-btn" id="searchBtn" type="button">
+                    <span class="search-btn-label">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Search
+                    </span>
+                    <span class="search-btn-spinner">
+                        <i class="fa-solid fa-spinner"></i>
+                        Searching...
+                    </span>
+                </button>
+            </div>
+
+            <p class="availability-note" id="availabilityNote"></p>
+
+            <div class="search-options">
+                <label>
+                    <input type="checkbox" id="differentDropoff">
+                    Drop off at a different location
+                </label>
+                <span>Driver's age: 30–60</span>
+                <span>License issuing country: Nigeria</span>
+            </div>
+        </section>
+
+        <!-- PROMO -->
+        <section class="promo-banner">
+            <div class="promo-left">
+                <span class="promo-badge">New user</span>
+                <div>
+                    <h4>8% off <span>— book now and save</span></h4>
+                    <p>Valid for 15 days once claimed</p>
+                </div>
+            </div>
+            <button class="promo-claim-btn" id="promoClaimBtn" type="button">Claim</button>
+        </section>
+
+        <!-- RESULTS -->
+        <section class="results-section">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-kicker">AVAILABLE OPTIONS</span>
+                    <h2 class="section-title" id="resultsTitle">Popular car rental types</h2>
+                </div>
+                <span class="results-count" id="resultsCount">6 options</span>
+            </div>
+
+            <div class="type-grid" id="carGrid">
+                <article class="type-card" data-theme="econ"
+                    data-city="Lagos Abuja Enugu Ibadan Kaduna Benin City Uyo Owerri Kano Port Harcourt">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Economy & Compact — drop your own photo in the images folder as car-econ.jpg -->
+                        <img class="type-img" src="../images/car-econ.jpg" alt="Economy and compact rental car"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Most popular</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Economy &amp; Compact</h3>
+                        <p class="type-subtitle">Toyota Corolla, Kia Rio, or similar</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-user"></i> 5 seats</li>
+                            <li><i class="fa-solid fa-suitcase"></i> 2 bags</li>
+                            <li><i class="fa-solid fa-gas-pump"></i> Efficient</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">From</span>
+                            <strong class="price-val" data-daily-rate="25000">₦25,000<span>/day</span></strong>
+                        </div>
+                        <button class="view-deal-btn" type="button">View deal</button>
+                    </div>
+                </article>
+
+                <article class="type-card" data-theme="suv"
+                    data-city="Lagos Abuja Port Harcourt Enugu Kano Kaduna Uyo Owerri">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Compact SUV — drop your own photo in the images folder as car-suv.jpg -->
+                        <img class="type-img" src="../images/car-suv.jpg" alt="Compact SUV rental car" loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Great for road trips</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Compact SUV</h3>
+                        <p class="type-subtitle">Honda CR-V, Hyundai Tucson, or similar</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-user"></i> 5 seats</li>
+                            <li><i class="fa-solid fa-suitcase"></i> 4 bags</li>
+                            <li><i class="fa-solid fa-arrows-up-down-left-right"></i> Extra space</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">From</span>
+                            <strong class="price-val" data-daily-rate="45000">₦45,000<span>/day</span></strong>
+                        </div>
+                        <button class="view-deal-btn" type="button">View deal</button>
+                    </div>
+                </article>
+
+                <article class="type-card" data-theme="ev" data-city="Lagos Abuja Port Harcourt">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Electric & Hybrid — drop your own photo in the images folder as car-ev.jpg -->
+                        <img class="type-img" src="../images/car-ev.jpg" alt="Electric and hybrid rental car"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Eco-friendly</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Electric &amp; Hybrid</h3>
+                        <p class="type-subtitle">Toyota Corolla Hybrid, Hyundai Ioniq, or similar</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-user"></i> 5 seats</li>
+                            <li><i class="fa-solid fa-suitcase"></i> 3 bags</li>
+                            <li><i class="fa-solid fa-leaf"></i> Low emission</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">From</span>
+                            <strong class="price-val" data-daily-rate="40000">₦40,000<span>/day</span></strong>
+                        </div>
+                        <button class="view-deal-btn" type="button">View deal</button>
+                    </div>
+                </article>
+
+                <article class="type-card" data-theme="van" data-city="Lagos Abuja Port Harcourt Enugu Kano Ibadan">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Minivans & Vans — drop your own photo in the images folder as car-van.jpg -->
+                        <img class="type-img" src="../images/car-van.jpg" alt="Minivan rental" loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Large groups</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Minivans &amp; Vans</h3>
+                        <p class="type-subtitle">Toyota Hiace, Toyota Sienna, or similar</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-user"></i> 7–8 seats</li>
+                            <li><i class="fa-solid fa-suitcase"></i> 5+ bags</li>
+                            <li><i class="fa-solid fa-users"></i> Spacious</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">From</span>
+                            <strong class="price-val" data-daily-rate="55000">₦55,000<span>/day</span></strong>
+                        </div>
+                        <button class="view-deal-btn" type="button">View deal</button>
+                    </div>
+                </article>
+
+                <article class="type-card" data-theme="convertible" data-city="Lagos Abuja">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Convertibles — drop your own photo in the images folder as car-convertible.jpg -->
+                        <img class="type-img" src="../images/car-convertible.jpg" alt="Convertible rental car"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Scenic drives</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Convertibles</h3>
+                        <p class="type-subtitle">Ford Mustang Convertible, Mini Cooper, or similar</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-user"></i> 4 seats</li>
+                            <li><i class="fa-solid fa-suitcase"></i> 2 bags</li>
+                            <li><i class="fa-solid fa-cloud-sun"></i> Open top</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">From</span>
+                            <strong class="price-val" data-daily-rate="90000">₦90,000<span>/day</span></strong>
+                        </div>
+                        <button class="view-deal-btn" type="button">View deal</button>
+                    </div>
+                </article>
+
+                <article class="type-card" data-theme="luxury" data-city="Lagos Abuja Port Harcourt">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Luxury & Sports — drop your own photo in the images folder as car-luxury.jpg -->
+                        <img class="type-img" src="../images/car-luxury.jpg" alt="Luxury rental car" loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Premium comfort</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Luxury &amp; Sports</h3>
+                        <p class="type-subtitle">Mercedes-Benz GLE, Range Rover Sport, or similar</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-user"></i> 4 seats</li>
+                            <li><i class="fa-solid fa-suitcase"></i> 3 bags</li>
+                            <li><i class="fa-solid fa-bolt"></i> High performance</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">From</span>
+                            <strong class="price-val" data-daily-rate="120000">₦120,000<span>/day</span></strong>
+                        </div>
+                        <button class="view-deal-btn" type="button">View deal</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="reviews-section">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-kicker">TRAVELLER FEEDBACK</span>
+                    <h2 class="section-title">Car rental user reviews</h2>
+                </div>
+            </div>
+
+            <div class="reviews-grid">
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">CO</div>
+                        <div><strong>Chidinma O.</strong><span class="rating-badge">5.0 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 22, 2026 · Toyota Corolla · Lagos</div>
+                    <p>The car was in good condition, and pickup at MMIA was simple and smooth.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">IU</div>
+                        <div><strong>Ifeanyi U.</strong><span class="rating-badge">5.0 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 27, 2026 · Toyota Hiace · Abuja</div>
+                    <p>The rental and return process was very convenient and quick, and the price was fair.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">AB</div>
+                        <div><strong>Aisha B.</strong><span class="rating-badge">5.0 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 19, 2026 · Toyota Hilux · Kano</div>
+                    <p>The vehicle was in good condition, and the service at drop-off was excellent.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">EA</div>
+                        <div><strong>Emeka A.</strong><span class="rating-badge">4.8 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Sep 01, 2026 · Mercedes-Benz GLE · Port Harcourt</div>
+                    <p>Pick-up was seamless right at the airport desk. The car was spotless and drove beautifully.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">BN</div>
+                        <div><strong>Blessing N.</strong><span class="rating-badge">5.0 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 30, 2026 · Honda CR-V · Enugu</div>
+                    <p>Great experience for our family road trip. Extra boot space made packing easy.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">TK</div>
+                        <div><strong>Tunde K.</strong><span class="rating-badge">4.9 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 14, 2026 · Toyota Camry · Lagos</div>
+                    <p>Very affordable rate and no hidden charges at drop-off. Will definitely book again.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact us</h3>
+                <a href="#">Customer support</a>
+                <a href="#">Service Guarantee</a>
+                <a href="#">More service info</a>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <a href="#">About Travel Ease</a>
+                <a href="#">Careers</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-column">
+                <h3>Other services</h3>
+                <a href="#">Travel Ease Rewards</a>
+                <a href="#">List your property</a>
+                <a href="#">All hotels</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="small-screen">
+        <h4>Group C project all rights reserved @2026</h4>
+    </footer>
+
+    <!-- =================================
+     TRAVEL EASE ROBOT
+================================= -->
+
+    <div class="robot">
+
+        <div class="travel-bot">
+
+            <div class="bot-tooltip">
+                Need help?
+            </div>
+
+            <button class="bot-button" id="botButton">
+                <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+            </button>
+
+        </div>
+
+
+        <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+        <div class="bot-popup" id="botPopup">
+
+            <div class="bot-card">
+
+                <!-- HEADER -->
+
+                <div class="bot-header">
+
+                    <div class="bot-title">
+
+                        <div class="small-bot">
+                            <img src="/images/robot.jpg" alt="">
+                        </div>
+
+                        <div>
+                            <h3>Travel Ease</h3>
+                            <span>Travel Assistant</span>
+                        </div>
+
+                    </div>
+
+                    <button class="bot-close" id="botClose">
+                        &times;
+                    </button>
+
+                </div>
+
+
+                <!-- QUESTIONS -->
+
+                <div class="bot-page" id="questionsPage">
+
+                    <div class="bot-greeting">
+
+                        <h4>Hi there!</h4>
+
+                        <p>
+                            What would you like to know?
+                        </p>
+
+                    </div>
+
+
+                    <div class="question-list">
+
+                        <button class="question-btn" data-question="What does a travel visa mean?"
+                            data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria.">
+                            <span>What does a travel visa mean?</span>
+                            <b>›</b>
+                        </button>
+
+
+                        <button class="question-btn" data-question="Which locations does Travel Ease support?"
+                            data-answer="Travel Ease currently supports 10 Nigerian locations: Lagos, Abuja, Port Harcourt, Kano, Enugu, Ibadan, Kaduna, Benin City, Uyo, and Owerri.">
+                            <span>Which locations are supported?</span>
+                            <b>›</b>
+                        </button>
+
+
+                        <button class="question-btn" data-question="Are cars and transportation available?"
+                            data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations.">
+                            <span>Are cars available?</span>
+                            <b>›</b>
+                        </button>
+
+
+                        <button class="question-btn" data-question="Are hotels available?"
+                            data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip.">
+                            <span>Are hotels available?</span>
+                            <b>›</b>
+                        </button>
+
+
+                        <button class="question-btn" data-question="Is Travel Ease budget-friendly?"
+                            data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget.">
+                            <span>Is it budget-friendly?</span>
+                            <b>›</b>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+                <div class="bot-page answer-page" id="answerPage">
+
+                    <button class="back-button" id="backButton">
+                        ← Back
+                    </button>
+
+
+                    <div class="answer-content">
+
+                        <div class="answer-icon">
+                            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+                        </div>
+
+
+                        <p class="answer-question" id="answerQuestion"></p>
+
+
+                        <div class="answer-line"></div>
+
+
+                        <p class="answer-text" id="answerText"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/js/car.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/robot.js"></script>
+</body>
+
+</html>

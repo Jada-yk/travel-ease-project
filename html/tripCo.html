@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="stylesheet" href="/css/loader.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <title>TravelEase</title>
+
+    
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="/css/tripCo.css">
+</head>
+
+<body>
+
+
+    <header class="topbar">
+
+        <div class="logo">
+            TravelEase
+        </div>
+
+        <div class="search-small">
+
+            <input
+            type="text"
+            id="topSearchInput"
+            placeholder="Destination, attraction, hotel etc."
+            autocomplete="off"
+            >
+
+            <button id="topSearchButton">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+        <div class="top-links">
+
+            <a href="#family-section" class="top-link">
+                Best places
+            </a>
+
+            <a href="#testimonials-section" class="top-link">
+                What our customers feel
+            </a>
+
+        </div>
+
+        <button class="signin" id="signInButton" type="button">
+            Sign in / Register
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <h1>
+                    Every check-in is a new beginning
+                </h1>
+
+                <div class="benefits">
+
+                    <span>
+                        <i class="fa-solid fa-circle-check"></i>
+                        We price match
+                    </span>
+
+                    <b>|</b>
+
+                    <span>
+                        <i class="fa-solid fa-calendar-check"></i>
+                        Hotel booking guarantee
+                    </span>
+
+                    <b>|</b>
+
+                    <span>
+                        <i class="fa-solid fa-hotel"></i>
+                        Hotel stay guarantee
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="search-panel">
+
+
+                
+
+                <div class="categories">
+
+
+
+    <!-- HOTELS -->
+    <div class="category active" data-category="hotels">
+
+        <i class="fa-solid fa-bed"></i>
+
+        <span>
+            Hotels & Homes
+        </span>
+
+    </div>
+
+
+    <!-- FLIGHTS -->
+    <div class="category" data-category="flights">
+
+        <i class="fa-solid fa-plane"></i>
+
+        <span>
+            Flights
+        </span>
+
+    </div>
+
+
+    <!-- ATTRACTIONS -->
+    <div class="category" data-category="attractions">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <span>
+            Attractions & Tours
+        </span>
+
+    </div>
+
+
+    <!-- CARS -->
+    <div class="category" data-category="cars">
+
+        <i class="fa-solid fa-car"></i>
+
+        <span>
+            Cars
+        </span>
+
+    </div>
+
+</div>
+
+
+            
+
+                <!-- =====================================================
+                     FLIGHTS SEARCH FORM
+                     (shown instead of .search-details when the Flights
+                     tab is active — built/handled in tripCo.js)
+                ===================================================== -->
+                <div class="flight-search" id="flightSearch" data-trip="roundTrip">
+
+                    <div class="fl-options">
+
+                        <label class="fl-radio">
+                            <input type="radio" name="flTripType" value="roundTrip" checked>
+                            <span>Round-trip</span>
+                        </label>
+
+                        <label class="fl-radio">
+                            <input type="radio" name="flTripType" value="oneWay">
+                            <span>One-way</span>
+                        </label>
+
+                        <label class="fl-radio">
+                            <input type="radio" name="flTripType" value="multiCity">
+                            <span>Multi-city</span>
+                        </label>
+
+                        <span class="fl-divider"></span>
+
+                        <label class="fl-check">
+                            <input type="checkbox" id="flNonstop">
+                            <span>Nonstop</span>
+                        </label>
+
+                    </div>
+
+                    <div class="fl-row fl-row-top">
+
+                        <div class="fl-route">
+
+                            <button type="button" class="fl-field" id="flFrom">
+                                <span class="fl-label">Leaving from</span>
+                                <strong class="fl-value"></strong>
+                            </button>
+
+                            <button type="button" class="fl-swap" id="flSwap" aria-label="Swap departure and destination">
+                                <i class="fa-solid fa-right-left"></i>
+                            </button>
+
+                            <button type="button" class="fl-field" id="flTo">
+                                <span class="fl-label">Going to</span>
+                                <strong class="fl-value"></strong>
+                            </button>
+
+                        </div>
+
+                        <div class="fl-dates">
+
+                            <div class="fl-date" id="flDepartBox">
+                                <small>Depart</small>
+                                <strong id="flDepartText"></strong>
+                                <input type="date" id="flDepartInput" aria-label="Departure date">
+                            </div>
+
+                            <span class="fl-date-dash"></span>
+
+                            <div class="fl-date" id="flReturnBox">
+                                <small>Return</small>
+                                <strong id="flReturnText"></strong>
+                                <input type="date" id="flReturnInput" aria-label="Return date">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="fl-row fl-row-bottom">
+
+                        <div class="fl-pax" id="flPax" role="button" tabindex="0">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="flPaxText">1 adult · Economy</span>
+                            <i class="fa-solid fa-chevron-down fl-chevron"></i>
+                        </div>
+
+                        <button type="button" class="fl-bundle" id="flBundle">
+                            Flight + Hotel
+                        </button>
+
+                        <button type="button" class="fl-search" id="flSearch">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="search-details" id="searchDetails">
+
+
+                    
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>
+                                Where to?
+                            </small>
+
+                            <p>
+                                Select destination
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        <div>
+
+                            <small>
+                                Date
+                            </small>
+
+                            <p>
+                                Wed, Aug 19
+                                <b>→</b>
+                                Thu, Aug 20
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <div>
+
+                            <small>
+                                Guests
+                            </small>
+
+                            <p>
+                                1 room, 2 adults, 0 children
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    
+
+                    <button class="search-button">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================================
+     TRAVELEASE DESTINATION CAROUSELS
+========================================================= -->
+
+<!-- ================= GET INSPIRED ================= -->
+
+
+<section class="te-section">
+
+    <div class="te-section-header">
+        <h2>Get inspired for your next trip</h2>
+
+        <div class="te-carousel-buttons">
+            <button class="te-arrow te-prev" data-carousel="te-inspiration">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <button class="te-arrow te-next" data-carousel="te-inspiration">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="te-carousel-wrapper">
+
+        <div class="te-carousel" id="te-inspiration">
+
+
+            <!-- 1 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspoLagos.png"
+                    alt="Lagos"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Popular
+                </span>
+
+                <h3>Lagos</h3>
+
+            </article>
+
+
+            <!-- 2 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspoOgun.png"
+                    alt="Ogun"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Nature
+                </span>
+
+                <h3>Ogun</h3>
+
+            </article>
+
+
+            <!-- 3 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspOyo.png"
+                    alt="Oyo"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Culture
+                </span>
+
+                <h3>Oyo</h3>
+
+            </article>
+
+
+
+            </article>
+
+
+            <!-- 5 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspCrossriver.png"
+                    alt="Cross River"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Adventure
+                </span>
+
+                <h3>Cross River</h3>
+
+            </article>
+
+
+            <!-- 6 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspoEnugu.png"
+                    alt="Enugu"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Scenic
+                </span>
+
+                <h3>Enugu</h3>
+
+            </article>
+
+
+            <!-- 7 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspoKaduna.png"
+                    alt="Kaduna"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Explore
+                </span>
+
+                <h3>Kaduna</h3>
+
+            </article>
+
+
+            <!-- 8 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspoKano.png"
+                    alt="Kano"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Heritage
+                </span>
+
+                <h3>Kano</h3>
+
+            </article>
+
+
+            <!-- 9 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/inspPleateu.png"
+                    alt="Plateau"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Mountains
+                </span>
+
+                <h3>Plateau</h3>
+
+            </article>
+
+
+            <!-- 10 -->
+            <article class="te-small-card">
+
+                <img
+                    src="/images/akwa ibom.jpg"
+                    alt="Akwa Ibom"
+                >
+
+                <div class="te-card-overlay"></div>
+
+                <span class="te-tag">
+                    Relax
+                </span>
+
+                <h3>Akwa Ibom</h3>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FAMILY-FRIENDLY PLACES ================= -->
+
+<section class="te-section family-section" id="family-section">
+
+    <div class="te-section-header">
+        <h2>Family-friendly places everyone will love</h2>
+        <p class="family-section-sub">
+            Spots the whole family can enjoy together — plus a fun fact about each one.
+        </p>
+    </div>
+
+    <div class="family-grid">
+
+        <!-- 1 -->
+        <article class="family-card">
+
+            <div class="family-card-visual">
+                <!-- MY IMAGE: Lekki Conservation Centre — drop your own photo in images/family/lekki.jpg -->
+                <img
+                    src="images/family/lekki.jpg"
+                    alt="Family walking the Lekki Conservation Centre canopy walkway"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80';">
+            </div>
+
+            <div class="family-card-body">
+                <h3>Lekki Conservation Centre, Lagos</h3>
+                <p>A canopy walkway and nature trail the kids will talk about for weeks.</p>
+
+                <div class="fun-fact">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Fun fact: it holds one of the longest canopy walkways in Africa.</span>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- 2 -->
+        <article class="family-card">
+
+            <div class="family-card-visual">
+                <!-- MY IMAGE: Nike Art Gallery — drop your own photo in images/family/nike-gallery.jpg -->
+                <img
+                    src="images/family/nike-gallery.jpg"
+                    alt="Family exploring artwork at Nike Art Gallery"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1577720580479-7d839d829c73?auto=format&fit=crop&w=800&q=80';">
+            </div>
+
+            <div class="family-card-body">
+                <h3>Nike Art Gallery, Lagos</h3>
+                <p>Five floors of Nigerian art — a fun, free way to spend an afternoon together.</p>
+
+                <div class="fun-fact">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Fun fact: it displays over 8,000 pieces of art, one of West Africa's largest private collections.</span>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- 3 -->
+        <article class="family-card">
+
+            <div class="family-card-visual">
+                <!-- MY IMAGE: Yankari Game Reserve — drop your own photo in images/family/yankari.jpg -->
+                <img
+                    src="images/family/yankari.jpg"
+                    alt="Family on a safari drive at Yankari Game Reserve"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80';">
+            </div>
+
+            <div class="family-card-body">
+                <h3>Yankari Game Reserve, Bauchi</h3>
+                <p>Warm springs, a safari drive and elephants — a proper family adventure.</p>
+
+                <div class="fun-fact">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Fun fact: it's home to Nigeria's largest surviving elephant population.</span>
+                </div>
+            </div>
+
+        </article>
+
+        <!-- 4 -->
+        <article class="family-card">
+
+            <div class="family-card-visual">
+                <!-- MY IMAGE: Millennium Park — drop your own photo in images/family/millennium-park.jpg -->
+                <img
+                    src="images/family/millennium-park.jpg"
+                    alt="Family having a picnic at Millennium Park"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1506469717960-433cebe3f181?auto=format&fit=crop&w=800&q=80';">
+            </div>
+
+            <div class="family-card-body">
+                <h3>Millennium Park, Abuja</h3>
+                <p>Open lawns, walking paths and a lake — easy, relaxed fun for every age.</p>
+
+                <div class="fun-fact">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Fun fact: it was designed by an Israeli architect to mark Nigeria's new millennium in 2003.</span>
+                </div>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- ================= WHAT OUR CUSTOMERS FEEL ================= -->
+
+<section class="te-section testimonials-section" id="testimonials-section">
+
+    <div class="te-section-header">
+        <h2>What our customers feel</h2>
+    </div>
+
+    <div class="testimonials-grid">
+
+        <article class="testimonial-card">
+            <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+                Booked a hotel and a rental car in one afternoon — the whole trip came together fast.
+            </p>
+            <div class="testimonial-author">
+                <span class="testimonial-avatar">A</span>
+                <div>
+                    <strong>Amaka O.</strong>
+                    <small>Lagos</small>
+                </div>
+            </div>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <p class="testimonial-quote">
+                We used the attractions page to plan a family weekend in Abuja — kids loved every stop.
+            </p>
+            <div class="testimonial-author">
+                <span class="testimonial-avatar">T</span>
+                <div>
+                    <strong>Tunde A.</strong>
+                    <small>Abuja</small>
+                </div>
+            </div>
+        </article>
+
+        <article class="testimonial-card">
+            <div class="testimonial-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="testimonial-quote">
+                Clear pricing, no surprises at check-in. This is now the first place I check for trips.
+            </p>
+            <div class="testimonial-author">
+                <span class="testimonial-avatar">F</span>
+                <div>
+                    <strong>Fatima B.</strong>
+                    <small>Kano</small>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer" style="margin-top: 2rem;">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact us</h3>
+                <a href="#">Customer support</a>
+                <a href="#">Service Guarantee</a>
+                <a href="#">More service info</a>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <a href="#">About Travel Ease</a>
+                <a href="#">Careers</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-column">
+                <h3>Other services</h3>
+                <a href="#">Travel Ease Rewards</a>
+                <a href="#">List your property</a>
+                <a href="#">All hotels</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="small-screen">
+        <h4>Group C project all rights reserved @2026</h4>
+    </footer>
+
+
+<div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+    
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease currently supports six Nigerian locations: Lagos, Port Harcourt, Abuja, Akure, Enugu, and Bauchi."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="/js/tripCo.js"></script>
+<script src="/js/loader.js"></script>
+<script src="/js/robot.js"></script>
+
+</body>
+</html>

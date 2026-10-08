@@ -1,0 +1,1646 @@
+:root {
+    --blue: #1669ed;
+    --white: #f8f9fa;
+    --black: #212529;
+    --red: #f21f1f;
+    --green: #108910;
+    --grey: #f5f5f5;
+    --deep-grey: rgba(192, 192, 192, 0.409);
+
+    --small: 14px;
+    --medium: 16px;
+    --large: 20px;
+    --extra-large: 25px;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    background: var(--white);
+    color: var(--black);
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    background-color: var(--blue);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 5px 5%;
+    min-height: 80px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    transition:
+        padding 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+
+/* Navbar when scrolling */
+
+.navbar.scrolled {
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-img {
+    width: 70px;
+    height: 70px;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.logo-text {
+    color: var(--white);
+    font-weight: 650;
+
+    display: block;
+
+    margin-top: -15px;
+}
+
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+
+    gap: 2.7rem;
+}
+
+.nav-link li {
+    list-style: none;
+}
+
+.nav-link li a {
+    text-decoration: none;
+    color: var(--white);
+
+    position: relative;
+
+    font-size: var(--medium);
+}
+
+
+/* Underline animation */
+
+.nav-items a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--white);
+
+    transition: width 0.25s ease;
+}
+
+.nav-items li:not(:last-child) a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   GET STARTED
+========================= */
+
+.nav-link li .get-started-btn {
+    background-color: var(--white);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: var(--small);
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: var(--blue);
+    text-decoration: none;
+    display: inline-block;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        border 0.25s ease;
+}
+
+.nav-link li .get-started-btn:hover {
+    background-color: transparent;
+    border-color: var(--white);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+/* =========================
+   HERO
+========================= */
+
+.hero-section {
+    width: 100%;
+    min-height: 650px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 50px;
+
+    padding: 70px 7%;
+
+    background-color: var(--white);
+}
+
+
+/* Hero text */
+
+.hero-section .text {
+    width: 50%;
+
+    opacity: 0;
+
+    transform: translateX(-50px);
+
+    animation: heroText 1s ease forwards;
+}
+
+@keyframes heroText {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-section .text h1 {
+    font-size: clamp(42px, 6vw, 70px);
+
+    line-height: 1.1;
+
+    color: var(--blue);
+
+    margin-bottom: 20px;
+}
+
+
+/* Typing */
+
+.typing {
+    width: fit-content;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    border-right: 1.5px solid black;
+
+    animation:
+        typing 3s steps(25),
+        blink 0.7s infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 40%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+/* Hero button */
+
+.hero-section .text button {
+    padding: 12px 25px;
+
+    background-color: var(--blue);
+
+    color: var(--white);
+
+    border: 2px solid var(--blue);
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: var(--small);
+
+    margin-top: 45px;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.hero-section .text button:hover {
+    background-color: white;
+
+    color: var(--blue);
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 25px rgba(22, 105, 237, 0.2);
+}
+
+
+/* Hero image */
+
+.hero-section .image {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+    transform: translateX(50px);
+
+    animation: heroImage 1s ease 0.2s forwards;
+}
+
+@keyframes heroImage {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.airplane-img {
+    width: min(100%, 550px);
+
+    object-fit: contain;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.airplane-img:hover {
+    transform: translateY(-10px) rotate(-2deg);
+}
+
+
+/* =========================
+   DESTINATIONS
+========================= */
+
+.display-section {
+    width: 100%;
+
+    padding: 70px 0;
+
+    background-color: white;
+}
+
+.display-section h1 {
+    padding: 0 6%;
+
+    margin-bottom: 25px;
+
+    font-size: clamp(28px, 4vw, 38px);
+
+    color: var(--black);
+}
+
+
+/* Horizontal scrolling */
+
+.display {
+    display: flex;
+
+    gap: 20px;
+
+    overflow-x: auto;
+
+    scroll-behavior: smooth;
+
+    padding: 25px 6% 35px;
+
+    cursor: grab;
+
+    scrollbar-width: none;
+}
+
+.display::-webkit-scrollbar {
+    display: none;
+}
+
+.display:active {
+    cursor: grabbing;
+}
+
+
+/* Destination card */
+
+.display-images {
+    position: relative;
+
+    min-width: 280px;
+    width: 280px;
+
+    height: 360px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.display-images img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+
+/* Gradient */
+
+.display-images::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent 35%,
+            rgba(0, 0, 0, 0.85)
+        );
+
+    pointer-events: none;
+}
+
+
+/* Destination text */
+
+.card-overlay {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 2;
+
+    color: white;
+
+    transform: translateY(5px);
+
+    transition: transform 0.3s ease;
+}
+
+.card-overlay h3 {
+    margin-bottom: 5px;
+
+    font-size: 25px;
+}
+
+.card-overlay p {
+    font-size: 14px;
+
+    opacity: 0.9;
+}
+
+
+/* Hover */
+
+.display-images:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.display-images:hover img {
+    transform: scale(1.08);
+}
+
+.display-images:hover .card-overlay {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   REVIEWS
+========================= */
+
+.reviews-section {
+    width: 100%;
+
+    padding: 70px 0;
+
+    overflow: hidden;
+
+    background-color: #f8f9fa;
+}
+
+.reviews-heading {
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    padding: 0 20px;
+}
+
+.reviews-heading h2 {
+    font-size: clamp(25px, 4vw, 34px);
+
+    margin-bottom: 10px;
+
+    color: var(--black);
+}
+
+.reviews-heading p {
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* Review wrapper */
+
+.reviews-wrapper {
+    width: 100%;
+
+    overflow: hidden;
+}
+
+
+/* Review track */
+
+.reviews-track {
+    display: flex;
+
+    gap: 25px;
+
+    width: max-content;
+
+    animation: reviewScroll 25s linear infinite;
+}
+
+.reviews-wrapper:hover .reviews-track {
+    animation-play-state: paused;
+}
+
+
+/* Review card */
+
+.review-card {
+    width: 330px;
+
+    min-height: 230px;
+
+    background-color: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    flex-shrink: 0;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Review top */
+
+.review-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+
+/* Avatar */
+
+.avatar {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    background: #d9d9d9;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    color: white;
+}
+
+
+/* Rating */
+
+.rating {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 16px;
+}
+
+.star {
+    color: #f4c400;
+
+    font-size: 24px;
+
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover .star {
+    transform: rotate(15deg) scale(1.2);
+}
+
+.review-card h3 {
+    margin-bottom: 12px;
+
+    font-size: 18px;
+
+    color: var(--black);
+}
+
+.review-text {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* Review animation */
+
+@keyframes reviewScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =========================
+   ABOUT US
+========================= */
+
+.about-us {
+    width: 100%;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background-color: var(--grey);
+}
+
+.about-us h2 {
+    font-size: clamp(28px, 4vw, 34px);
+
+    color: var(--blue);
+
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    max-width: 700px;
+
+    margin: 0 auto 10px;
+
+    font-size: 16px;
+
+    color: var(--black);
+
+    line-height: 1.7;
+}
+
+
+/* =================================================
+   TEAM
+================================================= */
+
+.team-section {
+    width: 100%;
+
+    /*
+       Reduced from 350px.
+       This gives the message room without creating
+       a huge gap before the footer.
+    */
+    padding: 70px 0 130px;
+
+    background: #f8f9fa;
+
+    overflow: visible;
+
+    position: relative;
+}
+
+.team-heading {
+    text-align: center;
+
+    margin-bottom: 45px;
+
+    padding: 0 20px;
+}
+
+.team-heading span {
+    display: block;
+
+    color: var(--blue);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.team-heading h2 {
+    margin-bottom: 10px;
+
+    font-size: clamp(28px, 4vw, 36px);
+
+    color: var(--black);
+}
+
+.team-heading p {
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   TEAM SLIDER
+========================= */
+
+.team-slider {
+    width: 100%;
+
+    /*
+       IMPORTANT:
+       Do NOT hide the dropdown.
+    */
+    overflow: visible;
+
+    position: relative;
+}
+
+.team-track {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 50px;
+
+    width: max-content;
+
+    /*
+       Small amount of space below cards.
+    */
+    padding: 20px 0 30px;
+
+    animation:
+        teamScroll 35s linear infinite;
+}
+
+.team-slider:hover .team-track {
+    animation-play-state: paused;
+}
+
+
+/* =========================
+   TEAM CARD
+========================= */
+
+.team-card {
+    width: 220px;
+
+    /*
+       Increased height so the message
+       has room below the image.
+    */
+    height: 300px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    position: relative;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile {
+    width: 180px;
+    height: 180px;
+
+    position: relative;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.profile:hover {
+    transform: translateY(-8px);
+}
+
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.profile img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 50%;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+.profile:hover img {
+    transform: scale(1.05);
+
+    filter: brightness(0.55);
+}
+
+
+/* =================================================
+   PROFILE INFORMATION / COMMENT
+================================================= */
+
+.profile-info {
+    position: absolute;
+
+    /*
+       This places the message underneath
+       the circular image.
+    */
+    top: 200px;
+
+    left: 50%;
+
+    width: 280px;
+
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.15);
+
+    /*
+       Hidden initially.
+    */
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateX(-50%)
+        translateY(-12px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
+
+    /*
+       Make absolutely sure it appears
+       above other elements.
+    */
+    z-index: 9999;
+}
+
+
+/* =========================
+   SMALL ARROW
+========================= */
+
+.profile-info::before {
+    content: "";
+
+    position: absolute;
+
+    top: -7px;
+
+    left: 50%;
+
+    width: 15px;
+
+    height: 15px;
+
+    background: white;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+}
+
+
+/* =========================
+   SHOW COMMENT
+========================= */
+
+.profile:hover .profile-info {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =========================
+   TEAM NAME
+========================= */
+
+.profile-info h3 {
+    margin-bottom: 5px;
+
+    color: var(--black);
+
+    font-size: 19px;
+}
+
+
+/* =========================
+   TEAM ROLE
+========================= */
+
+.profile-info span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--blue);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   TEAM DESCRIPTION
+========================= */
+
+.profile-info p {
+    margin-bottom: 17px;
+
+    color: #666;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   SOCIALS
+========================= */
+
+.socials {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.socials a {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--blue);
+
+    color: var(--blue);
+
+    text-decoration: none;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.socials a:hover {
+    background: var(--blue);
+
+    color: white;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================
+   TEAM ANIMATION
+========================= */
+
+@keyframes teamScroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    width: 100%;
+
+    background: var(--white);
+
+    padding: 55px 5%;
+}
+
+.footer-container {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 70px;
+}
+
+.footer-column h3 {
+    color: #0f172a;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 25px;
+}
+
+.footer-column a {
+    display: block;
+
+    text-decoration: none;
+
+    color: #0f172a;
+
+    font-size: 13px;
+
+    margin-bottom: 18px;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: var(--blue);
+
+    transform: translateX(3px);
+}
+
+
+/* Footer social icons */
+
+.social-icons {
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 18px;
+}
+
+.icon i {
+    color: #6a7280;
+
+    font-size: 18px;
+
+    transition: color 0.2s ease;
+}
+
+.icon:hover i {
+    color: var(--blue);
+}
+
+
+/* Bottom footer */
+
+footer.small-screen {
+    width: 100%;
+
+    background-color: var(--white);
+
+    color: var(--blue);
+
+    padding: 20px;
+
+    text-align: center;
+
+    display: block;
+
+    font-size: 13px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+footer.small-screen h4 {
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* =================================================
+   SCROLL REVEAL
+================================================= */
+
+.scroll-reveal {
+    opacity: 0;
+
+    transform: translateY(50px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scroll-reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =================================================
+   TABLET
+================================================= */
+
+@media (max-width: 900px) {
+
+    .footer {
+        display: none;
+    }
+
+    .navbar {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+
+    /* Keep only Get Started */
+
+    .nav-link {
+        gap: 0;
+    }
+
+    .nav-link li:not(:last-child) {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero-section {
+        min-height: auto;
+
+        padding: 70px 6%;
+
+        gap: 30px;
+    }
+
+    .hero-section .text h1 {
+        font-size: clamp(38px, 6vw, 55px);
+    }
+
+
+    /* Destination */
+
+    .display-images {
+        min-width: 250px;
+
+        width: 250px;
+
+        height: 330px;
+    }
+
+
+    /* Team */
+
+    .team-track {
+        gap: 35px;
+
+        animation-duration: 30s;
+    }
+
+
+    /* Footer */
+
+    .footer-container {
+        gap: 40px;
+    }
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media (max-width: 600px) {
+
+    /* Navbar */
+
+    .navbar {
+        min-height: 70px;
+
+        padding: 3px 20px;
+    }
+
+    .logo-img {
+        width: 60px;
+
+        height: 60px;
+    }
+
+    .logo-text {
+        font-size: 13px;
+
+        margin-top: -13px;
+    }
+
+.nav-link li .get-started-btn {
+    padding: 9px 15px;
+    font-size: 13px;
+}
+
+    /* Hero */
+
+    .hero-section {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding:
+            55px
+            20px
+            60px;
+
+        gap: 50px;
+    }
+
+    .hero-section .text {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .hero-section .text h1 {
+        font-size: 43px;
+
+        line-height: 1.15;
+    }
+
+    .typing {
+        font-size: 14px;
+    }
+
+    .hero-section .text button {
+        margin-top: 35px;
+    }
+
+    .hero-section .image {
+        width: 100%;
+    }
+
+    .airplane-img {
+        width: 85%;
+    }
+
+
+    /* Destinations */
+
+    .display-section {
+        padding: 50px 0;
+    }
+
+    .display-section h1 {
+        padding: 0 20px;
+
+        font-size: 28px;
+    }
+
+    .display {
+        gap: 15px;
+
+        padding:
+            20px
+            20px
+            30px;
+    }
+
+    .display-images {
+        min-width: 230px;
+
+        width: 230px;
+
+        height: 310px;
+
+        border-radius: 18px;
+    }
+
+    .card-overlay h3 {
+        font-size: 22px;
+    }
+
+
+    /* Reviews */
+
+    .reviews-section {
+        padding: 55px 0;
+    }
+
+    .reviews-heading {
+        padding: 0 20px;
+
+        margin-bottom: 30px;
+    }
+
+    .reviews-heading h2 {
+        font-size: 26px;
+    }
+
+    .reviews-heading p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+    .reviews-track {
+        gap: 15px;
+
+        animation-duration: 22s;
+    }
+
+    .review-card {
+        width: 280px;
+
+        min-height: 220px;
+
+        padding: 22px;
+    }
+
+
+    /* About */
+
+    .about-us {
+        padding:
+            55px
+            20px;
+    }
+
+    .about-us h2 {
+        font-size: 28px;
+    }
+
+    .about-us p {
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       TEAM MOBILE
+    ========================= */
+
+    .team-section {
+        /*
+           Enough space for the comment,
+           but not a huge gap.
+        */
+        padding:
+            55px
+            0
+            120px;
+
+        overflow: visible;
+    }
+
+    .team-heading {
+        margin-bottom: 30px;
+    }
+
+    .team-heading span {
+        font-size: 11px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .team-heading h2 {
+        font-size: 28px;
+    }
+
+    .team-heading p {
+        font-size: 14px;
+
+        line-height: 1.6;
+    }
+
+
+    .team-slider {
+        overflow: visible;
+    }
+
+    .team-track {
+        gap: 25px;
+
+        padding-bottom: 30px;
+
+        animation-duration: 28s;
+    }
+
+    .team-card {
+        width: 190px;
+
+        /*
+           More height for dropdown.
+        */
+        height: 285px;
+    }
+
+    .profile {
+        width: 155px;
+
+        height: 155px;
+    }
+
+    .profile-info {
+        top: 175px;
+
+        width: 250px;
+
+        padding: 18px;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        padding:
+            45px
+            25px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 18px;
+    }
+
+    .footer-column a {
+        margin-bottom: 13px;
+    }
+
+    .social-icons {
+        margin-top: 22px;
+    }
+}
+
+
+/* =================================================
+   VERY SMALL PHONES
+================================================= */
+
+@media (max-width: 380px) {
+
+    .hero-section .text h1 {
+        font-size: 36px;
+    }
+
+    .display-images {
+        min-width: 210px;
+
+        width: 210px;
+
+        height: 290px;
+    }
+
+    .review-card {
+        width: 260px;
+    }
+
+    .team-card {
+        width: 175px;
+
+        height: 275px;
+    }
+
+    .profile {
+        width: 145px;
+
+        height: 145px;
+    }
+
+    .profile-info {
+        width: 235px;
+
+        top: 165px;
+    }
+}
+
+
+/* =================================================
+   REDUCE MOTION
+================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

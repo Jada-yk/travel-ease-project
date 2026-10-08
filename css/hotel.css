@@ -1,0 +1,3566 @@
+:root {
+    --blue: #1669ed;
+    --white: #f8f9fa;
+    --black: #212529;
+    --red: #f21f1f;
+    --green: #108910;
+    --grey: #f5f5f5;
+    --deep-grey: rgba(192, 192, 192, 0.409);
+
+    --small: 14px;
+    --medium: 16px;
+    --large: 20px;
+    --extra-large: 25px;
+
+    /* "Stay theme" — used on the hotel details & payment pages.
+       These screens are transactional (checking details, paying,
+       collecting a ticket), so they get their own quiet, solid
+       palette instead of the homepage's photographic hero. */
+    --stay-ink: #12233b;
+    --stay-ink-light: #1d3a5c;
+    --stay-sand: #f6f2e8;
+    --stay-card: #ffffff;
+    --stay-gold: #b8873c;
+    --stay-line: #e7e0d1;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: var(--white);
+}
+
+.background-picture{
+    background: url(/images/hotelBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    margin-bottom: 4rem;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 30px;
+    position: relative;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 5rem;
+    width: 5rem;
+}
+
+.logo-text {
+    color: var(--white);
+    font-weight: 650;
+    display: block;
+    margin-top: -17px;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-items {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
+    font-size: 15px;
+    transition: color 200ms ease;
+
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: width 200ms ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SIGN IN BUTTON
+   ========================================================= */
+
+.signin-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--white);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition:
+        background 200ms ease,
+        color 200ms ease;
+}
+
+.signin-btn:hover {
+    background: var(--white);
+    color: var(--blue);
+}
+
+
+/* USER AVATAR AFTER LOGIN */
+
+.signin-btn.user-avatar {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--blue);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HAMBURGER
+   ========================================================= */
+
+.menu-part {
+    display: none;
+    position: relative;
+    z-index: 1003;
+    cursor: pointer;
+}
+
+.menu-bar {
+    color: var(--white);
+    font-size: 25px;
+}
+
+#close-menu {
+    display: none;
+    color: var(--blue);
+    position: fixed;
+    right: 14px;
+    top: 18px;
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   BACKDROP
+   ========================================================= */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    backdrop-filter: blur(0px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 300ms ease,
+        backdrop-filter 300ms ease,
+        background-color 300ms ease;
+
+    z-index: 1000;
+}
+
+.backdrop.active {
+    opacity: 1;
+    visibility: visible;
+
+    background-color: rgba(0, 0, 0, 0.228);
+
+    backdrop-filter: blur(6px);
+}
+
+
+/* =========================================================
+   WHITE BACKGROUND
+   ========================================================= */
+
+.white-background {
+    background-color: var(--grey);
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 110px;
+}
+
+
+/* =========================================================
+   SEARCH CARD
+   ========================================================= */
+
+.second-part {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-part {
+    background-color: var(--white);
+    padding: 16px 20px;
+
+    width: 70rem;
+    max-width: 92%;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.1);
+
+    border-radius: 10px;
+
+    position: relative;
+    top: -10px;
+}
+
+
+/* =========================================================
+   TRIP TYPE
+   ========================================================= */
+
+.top-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.top-section form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.input {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.input:hover {
+    background-color: var(--deep-grey);
+}
+
+.input input[type="radio"],
+.input input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--blue);
+}
+
+.input label {
+    cursor: pointer;
+    font-size: var(--small);
+    font-weight: 500;
+}
+
+.input:hover label {
+    color: var(--blue);
+}
+
+.line {
+    border-left: 1px solid rgba(150, 150, 150, 0.7);
+    height: 20px;
+    margin: 0 8px;
+}
+
+
+/* =========================================================
+   LOWER SEARCH SECTION
+   ========================================================= */
+
+.lower-section {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   LOCATIONS
+   ========================================================= */
+
+.locations {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    flex: 2.2;
+}
+
+.first-location,
+.second-location {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 8px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: var(--white);
+
+    cursor: pointer;
+
+    transition: border-color 150ms ease;
+
+    min-width: 0;
+}
+
+.first-location:hover,
+.second-location:hover,
+.first-location:focus-within,
+.second-location:focus-within {
+    border-color: var(--blue);
+}
+
+.field-label {
+    font-size: 11px;
+    color: #888;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CUSTOM LOCATION DROPDOWN
+   (replaces native <select> so the option list can be
+   positioned and clamped to the viewport ourselves)
+   ========================================================= */
+
+.location-field {
+    position: relative;
+}
+
+.location-select-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--black);
+
+    cursor: pointer;
+
+    width: 100%;
+    padding: 0;
+    text-align: left;
+}
+
+.location-select-btn span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.location-select-btn i {
+    font-size: 11px;
+    color: #999;
+    flex-shrink: 0;
+}
+
+.location-select-native {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.location-dropdown {
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 0;
+
+    width: max(100%, 260px);
+    max-width: calc(100vw - 24px);
+    max-height: min(320px, 60vh);
+
+    overflow-y: auto;
+
+    background: var(--white);
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.1);
+
+    z-index: 300;
+
+    box-sizing: border-box;
+}
+
+.location-dropdown.open {
+    display: block;
+}
+
+.location-dropdown.align-right {
+    left: auto;
+    right: 0;
+}
+
+.location-dropdown.align-top {
+    top: auto;
+    bottom: calc(100% + 10px);
+}
+
+.location-optgroup-label {
+    padding: 10px 14px 6px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #999;
+
+    background: var(--white);
+}
+
+.location-option {
+    display: block;
+    width: 100%;
+
+    padding: 10px 14px;
+
+    border: none;
+    background: transparent;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: var(--black);
+
+    text-align: left;
+    cursor: pointer;
+
+    transition: background 120ms ease, color 120ms ease;
+}
+
+.location-option:hover {
+    background: #f0f7ff;
+}
+
+.location-option.selected {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.location-select,
+.passenger-select {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--black);
+
+    cursor: pointer;
+
+    width: 100%;
+    padding: 0;
+}
+
+
+/* =========================================================
+   SWAP
+   ========================================================= */
+
+.swap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+
+    color: var(--blue);
+
+    font-size: 16px;
+
+    border: 1px solid #ddd;
+    border-left: none;
+    border-right: none;
+
+    background: var(--white);
+
+    transition: background 150ms ease;
+}
+
+.swap:hover {
+    background: #f0f7ff;
+}
+
+
+/* =========================================================
+   DATE / PASSENGERS
+   ========================================================= */
+
+.sec-lower {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    flex: 2.8;
+}
+
+.date {
+    flex: 1.4;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 8px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: var(--white);
+
+    cursor: pointer;
+
+    transition: border-color 150ms ease;
+
+    min-width: 0;
+}
+
+.date:hover,
+.date:focus-within {
+    border-color: var(--blue);
+}
+
+.date-input {
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--black);
+
+    cursor: pointer;
+
+    width: 100%;
+    padding: 0;
+}
+
+
+/* =========================================================
+   PASSENGER FIELD
+   ========================================================= */
+
+.flight-type {
+    flex: 1.4;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 8px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: var(--white);
+
+    cursor: pointer;
+
+    transition: border-color 150ms ease;
+
+    min-width: 0;
+}
+
+.flight-type:hover,
+.flight-type:focus-within {
+    border-color: var(--blue);
+}
+
+.pax-wrapper {
+    position: relative;
+}
+
+.pax-display {
+    font-size: 14px;
+    font-weight: 600;
+    background-color: var(--white);
+    border: 1px solid rgba(228, 228, 228, 0.79);
+    padding: 10px;
+
+    color: var(--black);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* =========================================================
+   PASSENGER DROPDOWN
+   ========================================================= */
+
+.pax-dropdown {
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 0;
+
+    background: var(--white);
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 18px 16px 14px;
+
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.1);
+
+    z-index: 300;
+
+    min-width: 230px;
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
+}
+
+.pax-dropdown.open {
+    display: block;
+}
+
+.pax-dropdown.align-right {
+    left: auto;
+    right: 0;
+}
+
+.pax-dropdown.align-top {
+    top: auto;
+    bottom: calc(100% + 10px);
+}
+
+.pax-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+.pax-row-last {
+    margin-bottom: 16px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.pax-label {
+    font-size: 14px;
+    font-weight: 500;
+
+    color: var(--black);
+
+    flex: 1;
+}
+
+.pax-select {
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    padding: 6px 8px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    outline: none;
+
+    width: 90px;
+
+    background: var(--white);
+
+    color: var(--black);
+}
+
+.pax-select:focus {
+    border-color: var(--blue);
+}
+
+.pax-done {
+    width: 100%;
+
+    padding: 9px;
+
+    background: var(--blue);
+
+    color: var(--white);
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-family: "Poppins", sans-serif;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+    transition: background 200ms ease;
+}
+
+.pax-done:hover {
+    background: #0051cc;
+}
+
+
+/* =========================================================
+   SEARCH BUTTON
+   ========================================================= */
+
+.search-btn {
+    flex: 0 0 auto;
+}
+
+.btn-search {
+    height: 100%;
+
+    padding: 0 24px;
+
+    background: var(--blue);
+
+    color: var(--white);
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+
+    transition: background 200ms ease;
+}
+
+.btn-search:hover {
+    background: #0051cc;
+}
+
+
+/* =========================================================
+   FLIGHT TABLE
+   ========================================================= */
+
+.table-section {
+    display: none;
+
+    background-color: var(--white);
+
+    padding: 30px;
+
+    margin: 30px auto;
+
+    width: 92%;
+
+    max-width: 70rem;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    margin-bottom: 20px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 2px solid #eee;
+}
+
+.table-header h2 {
+    color: var(--blue);
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.table-header p {
+    color: #666;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.flights-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.flights-table thead {
+    background-color: #f0f7ff;
+}
+
+.flights-table th {
+    padding: 12px 16px;
+
+    text-align: left;
+
+    font-weight: 600;
+
+    color: var(--blue);
+
+    font-size: 13px;
+
+    border-bottom: 2px solid #ddd;
+
+    white-space: nowrap;
+}
+
+.flights-table td {
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #eee;
+
+    color: var(--black);
+
+    font-size: 14px;
+}
+
+.flights-table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.no-results-cell {
+    text-align: center;
+
+    padding: 40px 16px;
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+.btn-book {
+    padding: 7px 18px;
+
+    background: var(--blue);
+
+    color: var(--white);
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    font-size: 13px;
+
+    transition: background 200ms ease;
+}
+
+.btn-book:hover {
+    background: #0051cc;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    background: var(--white);
+
+    padding: 60px 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap: 120px;
+}
+
+.footer-column h3 {
+    color: #0f172a;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 28px;
+}
+
+.footer-column a {
+    display: block;
+
+    text-decoration: none;
+
+    color: #0f172a;
+
+    font-size: 13px;
+
+    margin-bottom: 22px;
+
+    transition: color 200ms ease;
+}
+
+.footer-column a:hover {
+    color: var(--blue);
+}
+
+.social-icons {
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 36px;
+}
+
+.icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    transition: color 200ms ease;
+}
+
+.icon i {
+    color: #6a7280;
+
+    font-size: 18px;
+
+    transition: color 200ms ease;
+}
+
+.icon:hover i {
+    color: var(--blue);
+}
+
+footer.small-screen {
+    background-color: var(--white);
+
+    color: var(--blue);
+
+    padding: 20px;
+
+    text-align: center;
+
+    display: none;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   LOGIN / REGISTER MODAL
+   ========================================================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(5px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 5000;
+
+    overflow-y: auto;
+}
+
+
+.login-modal {
+    width: 100%;
+
+    max-width: 450px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    position: relative;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 32px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.2);
+
+    animation: modalAppear 250ms ease;
+}
+
+@keyframes modalAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* CLOSE BUTTON */
+
+.modal-close {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f3f4f6;
+
+    color: #374151;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 200ms ease,
+        color 200ms ease;
+}
+
+.modal-close:hover {
+    background: #e5e7eb;
+
+    color: #006ce4;
+}
+
+
+/* LOGIN LOGO */
+
+.login-logo {
+    color: #006ce4;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+
+/* LOGIN HEADING */
+
+.login-modal h2 {
+    color: #111827;
+
+    font-size: 24px;
+
+    margin-bottom: 8px;
+}
+
+
+/* DESCRIPTION */
+
+.login-description {
+    color: #6b7280;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+/* FORM */
+
+.login-modal form {
+    width: 100%;
+}
+
+.login-modal form > label {
+    display: block;
+
+    margin: 0 0 7px;
+
+    color: #374151;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.login-modal form > input,
+.login-modal form input[type="email"],
+.login-modal form input[type="tel"],
+.login-modal form input[type="password"],
+.login-modal form input[type="text"] {
+    width: 100% !important;
+
+    height: 48px !important;
+
+    padding: 0 14px !important;
+
+    margin: 0 0 16px !important;
+
+    box-sizing: border-box !important;
+
+    border: 1px solid #d1d5db !important;
+
+    border-radius: 10px !important;
+
+    background: #fff !important;
+
+    color: #111827 !important;
+
+    font-size: 15px !important;
+
+    outline: none !important;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+.login-modal form > input:focus,
+.login-modal form input[type="email"]:focus,
+.login-modal form input[type="tel"]:focus,
+.login-modal form input[type="password"]:focus,
+.login-modal form input[type="text"]:focus {
+    border-color: #006ce4 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 108, 228, 0.12) !important;
+}
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+.password-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 16px;
+}
+
+.password-wrapper input {
+    width: 100% !important;
+
+    height: 48px !important;
+
+    padding: 0 48px 0 14px !important;
+
+    box-sizing: border-box !important;
+
+    border: 1px solid #d1d5db !important;
+
+    border-radius: 10px !important;
+
+    outline: none !important;
+}
+
+.password-wrapper input:focus {
+    border-color: #006ce4 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 108, 228, 0.12) !important;
+}
+
+.toggle-password {
+    position: absolute;
+
+    top: 50%;
+    right: 12px;
+
+    transform: translateY(-50%);
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: #6b7280;
+
+    cursor: pointer;
+}
+
+.toggle-password:hover {
+    color: #006ce4;
+}
+
+
+/* =========================================================
+   LOGIN OPTIONS
+   ========================================================= */
+
+.login-options {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin: 2px 0 20px;
+}
+
+.remember-me {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #4b5563;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.remember-me input {
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+}
+
+.forgot-password {
+    border: none;
+
+    background: transparent;
+
+    color: #006ce4;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.continue-login {
+    width: 100% !important;
+
+    height: 50px !important;
+
+    border: none !important;
+
+    border-radius: 10px !important;
+
+    background: #006ce4 !important;
+
+    color: #ffffff !important;
+
+    font-size: 15px !important;
+
+    font-weight: 700 !important;
+
+    cursor: pointer !important;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease !important;
+}
+
+.continue-login:hover {
+    background: #0057b8 !important;
+
+    box-shadow:
+        0 6px 18px rgba(0, 108, 228, 0.25) !important;
+}
+
+.continue-login:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.login-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 24px 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #e5e7eb;
+}
+
+.login-divider span {
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT
+   ========================================================= */
+
+.create-account {
+    width: 100%;
+
+    height: 48px;
+
+    border: 1px solid #006ce4;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #006ce4;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.create-account:hover {
+    background: #f0f7ff;
+}
+
+
+/* =========================================================
+   TERMS
+   ========================================================= */
+
+.login-terms {
+    margin: 18px 0 0;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOGIN ERROR
+   ========================================================= */
+
+.login-error {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+
+.hotel-sections {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 10px 20px 40px;
+}
+
+.hotel-section {
+    margin-bottom: 40px;
+}
+
+.hotel-section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 16px;
+}
+
+.hotel-scroll-wrap {
+    position: relative;
+}
+
+.hotel-cards {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    padding-bottom: 4px;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hotel-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.hotel-card {
+    flex: 0 0 auto;
+    width: 270px;
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        box-shadow 200ms ease,
+        transform 200ms ease;
+}
+
+.hotel-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.hotel-card:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+.hotel-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: var(--grey);
+    overflow: hidden;
+}
+
+.hotel-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hotel-card-rating {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rating-score {
+    background: var(--blue);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.rating-reviews {
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.hotel-card-body {
+    padding: 12px 14px 14px;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.hotel-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.3;
+    margin-bottom: 6px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.hotel-stars {
+    color: #f7a600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.hotel-card-address {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    flex: 1;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hotel-card-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.hotel-card-price span {
+    font-size: 11px;
+    color: #888;
+}
+
+.hotel-card-price strong {
+    font-size: 17px;
+    color: var(--black);
+    font-weight: 700;
+}
+
+.hotel-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    border: 1px solid #ddd;
+    background: var(--white);
+    color: var(--blue);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    z-index: 10;
+
+    transition: background 150ms ease;
+}
+
+.hotel-scroll-btn:hover {
+    background: #f0f7ff;
+}
+
+.hotel-scroll-btn.scroll-left {
+    left: -18px;
+}
+
+.hotel-scroll-btn.scroll-right {
+    right: -18px;
+}
+
+.hotel-scroll-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE — HOTEL SECTIONS
+   ========================================================= */
+
+@media (max-width: 998px) {
+
+    .hotel-scroll-btn.scroll-left {
+        left: 4px;
+    }
+
+    .hotel-scroll-btn.scroll-right {
+        right: 4px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .hotel-sections {
+        padding: 10px 14px 30px;
+    }
+
+    .hotel-section-title {
+        font-size: 18px;
+    }
+
+    .hotel-card {
+        width: 200px;
+    }
+
+    .hotel-scroll-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+}
+
+
+.travel-notification {
+    position: fixed;
+
+    top: 90px;
+    right: 20px;
+
+    z-index: 6000;
+
+    max-width: 350px;
+
+    padding: 14px 18px;
+
+    border-radius: 8px;
+
+    background: #111827;
+
+    color: white;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2);
+
+    animation: notificationAppear 250ms ease;
+}
+
+@keyframes notificationAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@media (max-width: 998px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    .white-background {
+        padding-top: 88px;
+    }
+
+    .logo-img {
+        height: 4rem;
+        width: 4rem;
+    }
+
+
+    /* MOBILE NAV */
+
+    .nav-list {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        position: fixed;
+
+        top: 0;
+        right: 0;
+
+        width: 280px;
+        height: 100vh;
+
+        background-color: var(--white);
+
+        padding: 80px 30px 30px;
+
+        gap: 8px;
+
+        z-index: 1001;
+
+        transform: translateX(100%);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition:
+            transform 350ms ease,
+            opacity 300ms ease;
+    }
+
+    .nav-list.active {
+        transform: translateX(0);
+
+        opacity: 1;
+
+        pointer-events: auto;
+    }
+
+    .nav-items {
+        width: 100%;
+    }
+
+    .nav-link {
+        color: var(--black);
+
+        font-size: var(--medium);
+
+        display: block;
+
+        padding: 10px 0;
+
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-list .nav-link:hover {
+        color: var(--blue);
+    }
+
+    .nav-list .nav-link.active {
+        color: var(--blue);
+        font-weight: 600;
+    }
+
+    .signin-btn {
+        background: var(--blue);
+
+        color: var(--white);
+
+        border-color: var(--blue);
+
+        width: 100%;
+
+        text-align: center;
+
+        margin-top: 10px;
+    }
+
+    .signin-btn:hover {
+        background: #0051cc;
+
+        color: var(--white);
+    }
+
+    .signin-btn.user-avatar {
+        width: 40px;
+
+        margin-left: 0;
+    }
+
+    .menu-part {
+        display: block;
+    }
+
+
+    /* SEARCH */
+
+    .search-part {
+        width: 95%;
+        padding-top: 3rem;
+
+
+        max-width: 95%;
+
+        top: -8px;
+
+        padding: 14px;
+    }
+
+    .lower-section {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .locations {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .first-location,
+    .second-location {
+        width: 100%;
+    }
+
+    .swap {
+        width: 100%;
+
+        height: 36px;
+
+        border: 1px solid #ddd;
+
+        border-radius: 8px;
+    }
+
+    .sec-lower {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .date,
+    .flight-type {
+        width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    .btn-search {
+        width: 100%;
+
+        justify-content: center;
+
+        padding: 12px 24px;
+    }
+
+
+    /* TABLE */
+
+    .table-section {
+        width: 95%;
+
+        padding: 20px 16px;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        display: none;
+    }
+
+    footer.small-screen {
+        display: block;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 600px
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 12px 14px;
+    }
+
+    .white-background {
+        padding-top: 78px;
+    }
+
+    .logo-img {
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+
+    .logo-text {
+        font-size: 14px;
+
+        margin-top: -12px;
+    }
+
+    .search-part {
+        padding: 12px;
+
+        width: 96%;
+            padding-top: 3rem;
+
+
+        max-width: 96%;
+    }
+
+    .top-section {
+        gap: 0;
+
+        margin-bottom: 10px;
+    }
+
+    .input {
+        padding: 3px 7px;
+    }
+
+    .input label {
+        font-size: 12px;
+    }
+
+    .nav-list {
+        width: 240px;
+
+        padding: 75px 20px 20px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .flights-table th,
+    .flights-table td {
+        padding: 10px 10px;
+
+        font-size: 13px;
+    }
+
+    .btn-book {
+        padding: 6px 12px;
+
+        font-size: 12px;
+    }
+
+
+    /* LOGIN MODAL */
+
+    .modal-overlay {
+        padding: 12px;
+    }
+
+    .login-modal {
+        padding: 25px 20px;
+
+        border-radius: 14px;
+    }
+
+    .login-modal h2 {
+        font-size: 21px;
+    }
+
+    .login-description {
+        font-size: 12px;
+    }
+
+    .login-options {
+        align-items: flex-start;
+    }
+
+}
+
+/* =========================================================
+   HOTEL HERO
+   ========================================================= */
+
+.hotel-hero {
+    padding: 130px 30px 75px;
+    position: relative;
+}
+
+.hotel-hero-content {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 0 10px 34px;
+}
+
+.hotel-heading {
+    color: var(--white);
+    font-size: 42px;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 10px;
+    line-height: 1;
+}
+
+.accent-dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #f7a600;
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   HOTEL SEARCH CARD
+   ========================================================= */
+
+.hotel-search-part {
+    position: relative;
+}
+
+.hotel-marker {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 0 0 0 5px rgba(242, 31, 31, 0.15);
+}
+
+.hotel-search-row {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+}
+
+.hotel-field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    position: relative;
+    min-width: 0;
+}
+
+.hotel-divider {
+    border-left: 1px solid rgba(150, 150, 150, 0.35);
+    align-self: stretch;
+    margin: 6px 0;
+}
+
+.hotel-field-icon {
+    color: var(--blue);
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.hotel-field-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+    gap: 2px;
+}
+
+.hotel-field-body .location-select-btn {
+    display: flex;
+    align-items: center;
+}
+
+.hotel-clear-btn {
+    border: none;
+    background: #eee;
+    color: #888;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition:
+        background 150ms ease,
+        color 150ms ease;
+}
+
+.hotel-clear-btn:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.hotel-dates .location-select-btn {
+    gap: 6px;
+}
+
+.date-sep {
+    color: #999;
+    font-weight: 400;
+}
+
+.night-badge {
+    flex-shrink: 0;
+    background: var(--grey);
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.night-badge.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   DATE RANGE DROPDOWN
+   ========================================================= */
+
+.date-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    z-index: 300;
+    width: 300px;
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
+}
+
+.date-dropdown.open {
+    display: block;
+}
+
+.date-dropdown.align-right {
+    left: auto;
+    right: 0;
+}
+
+.cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.cal-nav-btn {
+    border: none;
+    background: var(--grey);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    color: var(--blue);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: background 150ms ease;
+}
+
+.cal-nav-btn:hover:not(:disabled) {
+    background: #e2e2e2;
+}
+
+.cal-nav-btn:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+}
+
+.cal-month-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 2px;
+}
+
+.cal-weekdays span {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+    padding: 4px 0;
+    display: block;
+}
+
+.cal-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.cal-day {
+    border: none;
+    background: transparent;
+    font-family: "Poppins", sans-serif;
+    font-size: 12.5px;
+    padding: 7px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--black);
+    transition:
+        background 120ms ease,
+        color 120ms ease;
+}
+
+.cal-day:hover:not(:disabled):not(.empty) {
+    background: #f0f7ff;
+}
+
+.cal-day:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.cal-day.empty {
+    visibility: hidden;
+    cursor: default;
+}
+
+.cal-day.in-range {
+    background: #eaf2ff;
+    border-radius: 0;
+}
+
+.cal-day.range-start,
+.cal-day.range-end {
+    background: var(--blue);
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.cal-footer {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cal-nights-label {
+    font-size: 12.5px;
+    color: #666;
+}
+
+.cal-done {
+    padding: 7px 16px;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    transition: background 200ms ease;
+    flex-shrink: 0;
+}
+
+.cal-done:hover {
+    background: #0051cc;
+}
+
+
+
+
+.pax-stepper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pax-step-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: var(--white);
+    color: var(--blue);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition:
+        background 150ms ease,
+        border-color 150ms ease;
+}
+
+.pax-step-btn:hover:not(:disabled) {
+    background: #f0f7ff;
+    border-color: var(--blue);
+}
+
+.pax-step-btn:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+}
+
+.pax-count {
+    min-width: 16px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+@media (max-width: 998px) {
+
+    .hotel-hero {
+        padding: 108px 20px 60px;
+    }
+
+    .hotel-heading {
+        font-size: 32px;
+    }
+
+    .hotel-search-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .hotel-field {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px 14px;
+    }
+
+    .hotel-divider {
+        display: none;
+    }
+
+    .date-dropdown {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .date-dropdown.align-right {
+        left: 50%;
+        right: auto;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .hotel-hero {
+        padding: 92px 14px 50px;
+    }
+
+    .hotel-heading {
+        font-size: 26px;
+    }
+
+}
+
+/* =========================================================
+   HOTEL DETAILS PAGE
+   ========================================================= */
+
+/* =========================================================
+   STAY THEME — hotel details & payment pages
+   Scoped to body.stay-theme so it never touches the homepage's
+   image-hero styling. Solid navy nav + warm sand body, on
+   purpose, instead of reusing background-picture.
+   ========================================================= */
+
+body.stay-theme {
+    background-color: #ffffff !important;
+    min-height: 100vh;
+}
+
+.stay-theme header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.stay-theme nav {
+    background-color: var(--stay-ink);
+    box-shadow: 0 2px 14px rgba(18, 35, 59, 0.25);
+}
+
+.stay-theme .signin-btn:hover {
+    color: var(--stay-ink);
+}
+
+@media (max-width: 998px) {
+    .stay-theme .nav-list {
+        background-color: var(--stay-card);
+    }
+
+    .stay-theme .nav-list .nav-link {
+        color: var(--stay-ink);
+    }
+
+    .stay-theme .nav-list .nav-link::after {
+        background-color: var(--stay-ink);
+    }
+}
+
+
+.details-page {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 110px 20px 60px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+
+    margin-bottom: 18px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.details-layout {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.details-hero-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--grey);
+}
+
+.details-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.details-info {
+    margin-top: 20px;
+}
+
+.details-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+.details-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.details-meta .hotel-stars {
+    color: #f7a600;
+    font-size: 13px;
+}
+
+.details-meta .rating-reviews {
+    background: var(--grey);
+}
+
+.details-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+.details-address i {
+    color: var(--blue);
+    margin-top: 2px;
+}
+
+.details-description {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.details-subheading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 14px;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 20px;
+}
+
+.amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    color: var(--black);
+}
+
+.amenity-item i {
+    width: 18px;
+    text-align: center;
+    color: var(--blue);
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   BOOKING PANEL (sidebar)
+   ========================================================= */
+
+.booking-panel {
+    position: sticky;
+    top: 100px;
+
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.booking-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+
+    margin-bottom: 18px;
+}
+
+.booking-price strong {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--black);
+}
+
+.booking-price span {
+    font-size: 13px;
+    color: #888;
+}
+
+.booking-field {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.booking-field .location-select-btn {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.booking-field .pax-display {
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.booking-summary {
+    border-top: 1px solid #eee;
+    padding-top: 14px;
+    margin-bottom: 16px;
+}
+
+.booking-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 13px;
+    color: #666;
+
+    margin-bottom: 10px;
+}
+
+.booking-summary-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.booking-reserve-btn {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--blue);
+    color: var(--white);
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: background 200ms ease;
+}
+
+.booking-reserve-btn:hover {
+    background: #0057b8;
+}
+
+
+/* =========================================================
+   BOOKING CONFIRMATION MODAL
+   ========================================================= */
+
+.confirm-modal {
+    text-align: center;
+}
+
+.confirm-icon {
+    font-size: 44px;
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.confirm-details {
+    text-align: left;
+
+    background: var(--grey);
+    border-radius: 10px;
+
+    padding: 14px 16px;
+
+    margin: 18px 0;
+}
+
+.confirm-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 13px;
+    color: #444;
+
+    padding: 6px 0;
+}
+
+.confirm-row strong {
+    color: var(--black);
+    font-weight: 700;
+    text-align: right;
+}
+
+.confirm-total {
+    border-top: 1px solid #e0e0e0;
+    margin-top: 4px;
+    padding-top: 10px;
+
+    font-size: 14px;
+}
+
+.confirm-total strong {
+    color: var(--blue);
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — HOTEL DETAILS PAGE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .details-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-panel {
+        position: static;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .details-page {
+        padding: 96px 14px 40px;
+    }
+
+    .details-name {
+        font-size: 21px;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   NAV — MY BOOKINGS LINK + BADGE
+   ========================================================= */
+
+.bookings-link {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.bookings-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+
+    border-radius: 999px;
+
+    background: var(--red);
+    color: var(--white);
+
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.bookings-badge[hidden] {
+    display: none;
+}
+
+
+/* =========================================================
+   SEARCH RESULTS
+   ========================================================= */
+
+.search-results-section {
+    display: none;
+
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 30px 20px 10px;
+}
+
+.search-results-section.open {
+    display: block;
+}
+
+.search-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.clear-search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 8px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background: var(--white);
+    color: var(--blue);
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: background 150ms ease;
+}
+
+.clear-search-btn:hover {
+    background: #f0f7ff;
+}
+
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.search-results-grid .hotel-card {
+    width: 100%;
+}
+
+.search-results-empty {
+    grid-column: 1 / -1;
+
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+
+    padding: 40px 20px;
+
+    background: var(--grey);
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   PAYMENT PAGE
+   ========================================================= */
+
+.payment-page {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 110px 20px 60px;
+}
+
+.payment-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.payment-summary-card,
+.payment-form-card {
+    background: var(--stay-card);
+    border: 1px solid var(--stay-line);
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 4px 16px rgba(18, 35, 59, 0.06);
+}
+
+.payment-hotel-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid var(--stay-line);
+}
+
+.payment-hotel-img {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--grey);
+}
+
+.payment-hotel-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 4px;
+}
+
+.payment-hotel-address {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.4;
+}
+
+.payment-summary-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--stay-line);
+}
+
+.payment-summary-meta-item {
+    font-size: 12.5px;
+    color: #666;
+}
+
+.payment-summary-meta-item strong {
+    display: block;
+    font-size: 13.5px;
+    color: var(--black);
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.payment-summary-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--black);
+}
+
+.payment-summary-total-row span:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+}
+
+.payment-pay-to {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    background: var(--stay-sand);
+    border: 1px solid var(--stay-line);
+    border-radius: 10px;
+
+    padding: 12px 14px;
+    margin: 18px 0;
+}
+
+.payment-pay-to-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #8a8a8a;
+    margin-bottom: 2px;
+}
+
+.payment-pay-to-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.payment-pay-to-phone {
+    font-size: 12.5px;
+    color: #555;
+}
+
+.payment-pay-to i {
+    color: var(--stay-gold);
+    font-size: 18px;
+}
+
+.payment-reference-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--grey);
+    border-radius: 8px;
+
+    padding: 10px 14px;
+    margin-bottom: 18px;
+
+    font-size: 12.5px;
+    color: #555;
+}
+
+.payment-reference-row strong {
+    color: var(--black);
+    font-size: 13.5px;
+    letter-spacing: 0.03em;
+}
+
+.payment-form-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 16px;
+}
+
+.payment-form-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-form-card label {
+    display: block;
+    margin: 0 0 7px;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.payment-form-card input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    margin: 0 0 16px;
+    box-sizing: border-box;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #fff;
+    color: #111827;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.payment-form-card input:focus {
+    border-color: var(--stay-ink);
+    box-shadow: 0 0 0 3px rgba(18, 35, 59, 0.1);
+}
+
+.payment-form-row {
+    display: flex;
+    gap: 14px;
+}
+
+.payment-form-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.payment-form-note {
+    font-size: 12px;
+    color: #888;
+    margin: 14px 0 0;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PAYMENT SUCCESS VIEW
+   ========================================================= */
+
+.payment-success {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.payment-success h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 8px;
+}
+
+.payment-success .confirm-icon {
+    font-size: 40px;
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.receipt-frame {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(18, 35, 59, 0.16);
+    margin: 26px 0;
+    line-height: 0;
+    text-align: left;
+}
+
+.receipt-frame canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.receipt-download-btn {
+    width: 100%;
+    max-width: 360px;
+    height: 50px;
+    margin: 0 auto;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--stay-ink);
+    color: var(--white);
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: background 200ms ease;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.receipt-download-btn:hover {
+    background: var(--stay-ink-light);
+}
+
+.payment-success-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 360px;
+    margin: 16px auto 0;
+    align-items: center;
+    margin-bottom: 4rem;
+    height: 2px;
+
+}
+
+.payment-success-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 20px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — PAYMENT PAGE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .payment-page {
+        padding: 96px 14px 40px;
+    }
+
+    .payment-form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .payment-pay-to {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   MY BOOKINGS PAGE
+   ========================================================= */
+
+.bookings-page {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 110px 20px 60px;
+}
+
+.bookings-heading {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 24px;
+}
+
+.bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.booking-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    background: var(--white);
+    border: 1px solid #eee;
+    border-radius: 12px;
+
+    padding: 16px;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.booking-item-img {
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.booking-item-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.booking-item-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 4px;
+}
+
+.booking-item-address {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 8px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.booking-item-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    font-size: 12.5px;
+    color: #555;
+}
+
+.booking-item-meta i {
+    color: var(--blue);
+    margin-right: 6px;
+    width: 14px;
+    text-align: center;
+}
+
+.booking-item-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.booking-item-price strong {
+    font-size: 16px;
+    color: var(--black);
+}
+
+.booking-item-paid-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green);
+
+    background: #eafaf0;
+    padding: 3px 9px;
+    border-radius: 999px;
+}
+
+.bookings-empty {
+    text-align: center;
+    color: #666;
+
+    background: var(--grey);
+    border-radius: 12px;
+
+    padding: 50px 24px;
+}
+
+.bookings-empty i {
+    font-size: 34px;
+    color: #aaa;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.bookings-empty p {
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.bookings-empty-link {
+    display: inline-block;
+    width: auto;
+    padding: 0 24px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — MY BOOKINGS PAGE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .bookings-page {
+        padding: 96px 14px 40px;
+    }
+
+    .booking-item {
+        flex-wrap: wrap;
+    }
+
+    .booking-item-price {
+        align-items: flex-start;
+        text-align: left;
+        flex-direction: row;
+        gap: 12px;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+
+}

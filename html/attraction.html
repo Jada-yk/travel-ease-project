@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEase - Discover Nigeria's Top Attractions</title>
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="stylesheet" href="/css/loader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/attraction.css">
+</head>
+
+<body>
+    <div id="backdrop"></div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="header-visual">
+            <div class="header-track" id="headerTrack"></div>
+            <div class="header-overlay"></div>
+        </div>
+
+        <nav class="navbar">
+            <a href="/html/tripCo.html" class="logo" aria-label="TravelEase home">
+                <img src="/images/logo.png" alt="" class="logo-img">
+                <span class="logo-text">Travel <span>Ease</span></span>
+            </a>
+
+            <ul class="nav-list" id="nav-menu">
+                <li><a href="/html/index.html" class="nav-link">Flights</a></li>
+                <li><a href="/html/hotel.html" class="nav-link">Hotels</a></li>
+                <li><a href="/html/attraction.html" class="nav-link active">Attractions</a></li>
+                <li><a href="/html/car.html" class="nav-link">Car services</a></li>
+
+                <li class="mobile-signin">
+                    <button class="signin-btn signin-trigger" id="signInButtonMobile">
+                        Sign in / Register
+                    </button>
+                </li>
+
+                <span class="nav-actions">
+                    <button class="signin-btn signin-trigger" id="signInButton">
+                        Sign in / Register
+                    </button>
+                </span>
+
+                <button class="menu-part" id="menu-button" type="button" aria-label="Open navigation"
+                    aria-expanded="false">
+                    <i class="fa-solid fa-bars" id="open-menu"></i>
+                    <i class="fa-solid fa-xmark" id="close-menu" style="color:#1669ed;"></i>
+                </button>
+            </ul>
+        </nav>
+
+        <!-- Only a small hero message remains in the header -->
+        <div class="header-hero">
+            <span class="hero-kicker">TRAVELEASE ATTRACTIONS</span>
+            <h1>Find something worth flying for.</h1>
+        </div>
+
+        <div class="slider-dots" id="sliderDots" aria-label="Header image controls"></div>
+    </header>
+
+    <main class="container">
+        <!-- STATE PICKER -->
+        <section class="search-card">
+            <div class="search-top">
+                <div>
+                    <span class="section-kicker">EXPLORE BY STATE</span>
+                    <h2>Pick a state to see its top spots</h2>
+                </div>
+            </div>
+
+            <div class="state-chip-row" id="stateChipRow">
+                <button type="button" class="state-chip active" data-state="lagos">
+                    </i> Lagos
+                </button>
+                <button type="button" class="state-chip" data-state="abuja">
+                 </i> FCT Abuja
+                </button>
+                <button type="button" class="state-chip" data-state="rivers">
+                    </i> Rivers
+                </button>
+                <button type="button" class="state-chip" data-state="cross-river">
+                  </i> Cross River
+                </button>
+                <button type="button" class="state-chip" data-state="kano">
+                   </i> Kano
+                </button>
+                <button type="button" class="state-chip" data-state="enugu">
+                   </i> Enugu
+                </button>
+            </div>
+
+            <p class="state-desc" id="stateDesc">
+                Coastlines, art and nightlife along Nigeria's busiest state.
+            </p>
+        </section>
+
+        <!-- RESULTS -->
+        <section class="results-section">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-kicker">TOP PICKS</span>
+                    <h2 class="section-title" id="resultsTitle">Attractions in Lagos</h2>
+                </div>
+                <span class="results-count" id="resultsCount">3 places</span>
+            </div>
+
+            <div class="type-grid" id="attractionGrid">
+
+                <!-- LAGOS -->
+                <article class="type-card attraction-card" data-state="lagos">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Lekki Conservation Centre — drop your own photo in the images folder as attraction-lekki.jpg -->
+                        <img class="type-img" src="../images/attraction-lekki.jpg" alt="Lekki Conservation Centre canopy walkway"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Nature</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Lekki Conservation Centre</h3>
+                        <p class="type-subtitle">A treetop canopy walkway through a protected coastal rainforest.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Lekki, Lagos</li>
+                            <li><i class="fa-solid fa-star"></i> 4.5 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Lagos (LOS)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Lagos">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card" data-state="lagos">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Tarkwa Bay Beach — drop your own photo in the images folder as attraction-tarkwa.jpg -->
+                        <img class="type-img" src="../images/attraction-tarkwa.jpg" alt="Tarkwa Bay Beach"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Beach</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Tarkwa Bay Beach</h3>
+                        <p class="type-subtitle">A calm, boat-only beach popular for weekend getaways.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Lagos Island, Lagos</li>
+                            <li><i class="fa-solid fa-star"></i> 4.4 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Lagos (LOS)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Lagos">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card" data-state="lagos">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Nike Art Gallery — drop your own photo in the images folder as attraction-nike.jpg -->
+                        <img class="type-img" src="../images/art.png" alt="Nike Art Gallery"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1547333590-47fae5f58d21?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Culture</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Nike Art Gallery</h3>
+                        <p class="type-subtitle">One of West Africa's largest galleries of contemporary Nigerian art.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Lekki, Lagos</li>
+                            <li><i class="fa-solid fa-star"></i> 4.7 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Lagos (LOS)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Lagos">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- FCT ABUJA -->
+                <article class="type-card attraction-card hidden" data-state="abuja">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Aso Rock — drop your own photo in the images folder as attraction-asorock.jpg -->
+                        <img class="type-img" src="../images/attraction-asorock.jpg" alt="Aso Rock"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Landmark</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Aso Rock</h3>
+                        <p class="type-subtitle">The massive outcrop overlooking Nigeria's capital, popular for hiking.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Abuja, FCT</li>
+                            <li><i class="fa-solid fa-star"></i> 4.6 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">FCT Abuja (ABV)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=FCT+Abuja">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="abuja">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Millennium Park — drop your own photo in the images folder as attraction-millennium.jpg -->
+                        <img class="type-img" src="../images/attraction-millennium.jpg" alt="Millennium Park"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Park</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Millennium Park</h3>
+                        <p class="type-subtitle">A large landscaped park with fountains, gardens and open lawns.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Maitama, Abuja</li>
+                            <li><i class="fa-solid fa-star"></i> 4.5 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">FCT Abuja (ABV)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=FCT+Abuja">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="abuja">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Jabi Lake — drop your own photo in the images folder as attraction-jabilake.jpg -->
+                        <img class="type-img" src="../images/attraction-jabilake.jpg" alt="Jabi Lake"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Leisure</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Jabi Lake</h3>
+                        <p class="type-subtitle">A waterside spot for boating, jet-skiing and lakeside dining.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Jabi, Abuja</li>
+                            <li><i class="fa-solid fa-star"></i> 4.3 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">FCT Abuja (ABV)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=FCT+Abuja">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- RIVERS -->
+                <article class="type-card attraction-card hidden" data-state="rivers">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Port Harcourt Pleasure Park — drop your own photo in the images folder as attraction-pleasurepark.jpg -->
+                        <img class="type-img" src="../images/attraction-pleasurepark.jpg" alt="Port Harcourt Pleasure Park"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1533387520709-752d83de3630?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Park</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Port Harcourt Pleasure Park</h3>
+                        <p class="type-subtitle">A green family park with a lake, gardens and a small zoo.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Port Harcourt, Rivers</li>
+                            <li><i class="fa-solid fa-star"></i> 4.2 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Rivers (PHC)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Rivers">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="rivers">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Isaac Boro Park — drop your own photo in the images folder as attraction-isaacboro.jpg -->
+                        <img class="type-img" src="../images/attraction-isaacboro.jpg" alt="Isaac Boro Park"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Park</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Isaac Boro Park</h3>
+                        <p class="type-subtitle">A central city park with a fountain, good for an evening stroll.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Port Harcourt, Rivers</li>
+                            <li><i class="fa-solid fa-star"></i> 4.1 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Rivers (PHC)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Rivers">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="rivers">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Bonny Island Beach — drop your own photo in the images folder as attraction-bonny.jpg -->
+                        <img class="type-img" src="../images/attraction-bonny.jpg" alt="Bonny Island Beach"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Beach</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Bonny Island Beach</h3>
+                        <p class="type-subtitle">A quiet, palm-lined coastline reachable by boat from Port Harcourt.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Bonny, Rivers</li>
+                            <li><i class="fa-solid fa-star"></i> 4.4 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Rivers (PHC)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Rivers">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CROSS RIVER -->
+                <article class="type-card attraction-card hidden" data-state="cross-river">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Obudu Mountain Resort — drop your own photo in the images folder as attraction-obudu.jpg -->
+                        <img class="type-img" src="../images/attraction-obudu.jpg" alt="Obudu Mountain Resort"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Mountain</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Obudu Mountain Resort</h3>
+                        <p class="type-subtitle">A cool highland retreat with a cable car and rolling green hills.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Obanliku, Cross River</li>
+                            <li><i class="fa-solid fa-star"></i> 4.7 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Cross River (CBQ)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Cross+River">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="cross-river">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Tinapa Resort — drop your own photo in the images folder as attraction-tinapa.jpg -->
+                        <img class="type-img" src="../images/attraction-tinapa.jpg" alt="Tinapa Business and Leisure Resort"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Leisure</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Tinapa Resort</h3>
+                        <p class="type-subtitle">A riverside leisure and shopping resort just outside Calabar.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Calabar, Cross River</li>
+                            <li><i class="fa-solid fa-star"></i> 4.2 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Cross River (CBQ)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Cross+River">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="cross-river">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Calabar Marina — drop your own photo in the images folder as attraction-calabarmarina.jpg -->
+                        <img class="type-img" src="../images/attraction-calabarmarina.jpg" alt="Calabar Marina Resort"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Waterfront</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Calabar Marina Resort</h3>
+                        <p class="type-subtitle">A lively waterfront strip known for its Calabar Carnival atmosphere.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Calabar, Cross River</li>
+                            <li><i class="fa-solid fa-star"></i> 4.5 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Cross River (CBQ)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Cross+River">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- KANO -->
+                <article class="type-card attraction-card hidden" data-state="kano">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Kano City Walls — drop your own photo in the images folder as attraction-kanowalls.jpg -->
+                        <img class="type-img" src="../images/attraction-kanowalls.jpg" alt="Kano City Walls and Gates"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517840901100-8179e982acb7?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Heritage</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Kano City Walls & Gates</h3>
+                        <p class="type-subtitle">Centuries-old fortifications ringing one of Africa's oldest cities.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Kano City, Kano</li>
+                            <li><i class="fa-solid fa-star"></i> 4.3 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Kano (KAN)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Kano">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="kano">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Gidan Makama Museum — drop your own photo in the images folder as attraction-gidanmakama.jpg -->
+                        <img class="type-img" src="../images/attraction-gidanmakama.jpg" alt="Gidan Makama Museum"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509023464722-18d996393ca8?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Museum</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Gidan Makama Museum</h3>
+                        <p class="type-subtitle">A traditional clay palace turned museum of Hausa history and craft.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Kano City, Kano</li>
+                            <li><i class="fa-solid fa-star"></i> 4.4 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Kano (KAN)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Kano">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="kano">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Dala Hill — drop your own photo in the images folder as attraction-dalahill.jpg -->
+                        <img class="type-img" src="../images/attraction-dalahill.jpg" alt="Dala Hill"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Viewpoint</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Dala Hill</h3>
+                        <p class="type-subtitle">The highest point in Kano City, with sweeping rooftop views.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Kano City, Kano</li>
+                            <li><i class="fa-solid fa-star"></i> 4.0 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Kano (KAN)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Kano">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ENUGU -->
+                <article class="type-card attraction-card hidden" data-state="enugu">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Ngwo Pine Forest — drop your own photo in the images folder as attraction-ngwo.jpg -->
+                        <img class="type-img" src="../images/attraction-ngwo.jpg" alt="Ngwo Pine Forest"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Nature</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Ngwo Pine Forest</h3>
+                        <p class="type-subtitle">Tall pine rows and shaded trails just outside the city.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Ngwo, Enugu</li>
+                            <li><i class="fa-solid fa-star"></i> 4.3 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Enugu (ENU)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Enugu">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="enugu">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Milken Hill — drop your own photo in the images folder as attraction-milkenhill.jpg -->
+                        <img class="type-img" src="../images/attraction-milkenhill.jpg" alt="Milken Hill"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Viewpoint</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Milken Hill</h3>
+                        <p class="type-subtitle">A hilltop lookout over Enugu city, best visited at sunset.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Enugu City, Enugu</li>
+                            <li><i class="fa-solid fa-star"></i> 4.1 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Enugu (ENU)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Enugu">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="type-card attraction-card hidden" data-state="enugu">
+                    <div class="type-visual">
+                        <!-- MY IMAGE: Awhum Waterfall — drop your own photo in the images folder as attraction-awhum.jpg -->
+                        <img class="type-img" src="../images/attraction-awhum.jpg" alt="Awhum Waterfall and Cave"
+                            loading="lazy"
+                            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=900&q=80';">
+                        <span class="category-badge">Waterfall</span>
+                    </div>
+                    <div class="type-body">
+                        <h3 class="type-title">Awhum Waterfall & Cave</h3>
+                        <p class="type-subtitle">A forested waterfall beside a monastery cave, popular with hikers.</p>
+                        <ul class="type-specs">
+                            <li><i class="fa-solid fa-location-dot"></i> Awhum, Enugu</li>
+                            <li><i class="fa-solid fa-star"></i> 4.6 rating</li>
+                        </ul>
+                    </div>
+                    <div class="type-card-footer">
+                        <div class="type-price">
+                            <span class="price-from">Fly into</span>
+                            <strong class="price-val">Enugu (ENU)</strong>
+                        </div>
+                        <a class="view-deal-btn explore-btn" href="/html/index.html?to=Enugu">
+                            Explore <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- REVIEWS -->
+        <section class="reviews-section">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-kicker">TRAVELLER FEEDBACK</span>
+                    <h2 class="section-title">What explorers are saying</h2>
+                </div>
+            </div>
+
+            <div class="reviews-grid">
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">FA</div>
+                        <div><strong>Funke A.</strong><span class="rating-badge">5.0 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 18, 2026 · Lekki Conservation Centre · Lagos</div>
+                    <p>Booked the flight straight from the attraction page, so simple and quick.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">DM</div>
+                        <div><strong>David M.</strong><span class="rating-badge">4.9 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Aug 25, 2026 · Obudu Mountain Resort · Cross River</div>
+                    <p>The mountain air was worth every bit of the trip. Loved discovering it here first.</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="avatar">HB</div>
+                        <div><strong>Hauwa B.</strong><span class="rating-badge">4.8 / 5.0</span></div>
+                    </div>
+                    <div class="review-meta">Sep 02, 2026 · Kano City Walls · Kano</div>
+                    <p>Great way to plan a weekend trip. Picked a state, picked a spot, booked a flight.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Contact us</h3>
+                <a href="#">Customer support</a>
+                <a href="#">Service Guarantee</a>
+                <a href="#">More service info</a>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>About</h3>
+                <a href="#">About Travel Ease</a>
+                <a href="#">Careers</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer-column">
+                <h3>Other services</h3>
+                <a href="#">Travel Ease Rewards</a>
+                <a href="#">List your property</a>
+                <a href="#">All hotels</a>
+                <a href="#">Security</a>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="small-screen">
+        <h4>Group C project all rights reserved @2026</h4>
+    </footer>
+
+    <!-- =================================
+     TRAVEL EASE ROBOT
+================================= -->
+
+<div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease currently supports six Nigerian locations: Lagos, Port Harcourt, Abuja, Akure, Enugu, and Bauchi."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+    <script src="/js/attraction.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/robot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <link rel="stylesheet" href="/css/hotel.css">
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="stylesheet" href="/css/loader.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="background-picture">
+    <header>
+
+        <nav>
+
+            <!-- LOGO -->
+            <a href="/html/tripCo.html" class="logo" aria-label="TravelEase home">
+                <img src="/images/logo.png" alt="Travel Ease Logo" class="logo-img">
+                <span class="logo-text">
+                    Travel Ease
+                </span>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-items">
+                    <a href="index.html" class="nav-link">
+                        Flights
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="hotel.html" class="nav-link active">
+                        Hotels
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="attraction.html" class="nav-link">
+                        Attractions
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/car.html" class="nav-link">
+                        Car services
+                    </a>
+                </li>
+
+
+                <!-- MY BOOKINGS -->
+                <li class="nav-items">
+                    <a href="bookings.html" class="nav-link bookings-link">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                        My Bookings
+                        <span class="bookings-badge" id="bookings-badge" hidden>0</span>
+                    </a>
+                </li>
+
+
+                <!-- SIGN IN / REGISTER -->
+                <li class="nav-items">
+
+                    <button class="signin-btn" id="sign-in-button" type="button">
+                        Sign in / Register
+                    </button>
+
+                </li>
+
+            </ul>
+
+
+            <!-- HAMBURGER -->
+            <div class="menu-part" id="menu-button">
+
+                <i class="fa-solid fa-bars menu-bar" id="open-menu"></i>
+
+                <i class="fa-solid fa-xmark close-menu" id="close-menu"></i>
+
+            </div>
+
+        </nav>
+
+
+        <!-- BACKDROP -->
+        <div class="backdrop" id="backdrop"></div>
+
+
+
+    </header>
+
+
+<section class="hotel-hero">
+    <div class="hotel-hero-content">
+        <h1 class="hotel-heading">
+            Hotels &amp; Homes
+            <span class="accent-dot"></span>
+        </h1>
+    </div>
+
+    <div class="second-part">
+        <div class="search">
+            <div class="search-part hotel-search-part">
+
+                <!-- <div class="hotel-marker"></div> -->
+
+                <div class="hotel-search-row">
+
+                    <!-- LOCATION -->
+                    <div class="hotel-field hotel-location" id="hotel-location-field">
+                        <i class="fa-solid fa-location-dot hotel-field-icon"></i>
+
+                        <div class="hotel-field-body">
+                            <span class="field-label">Where to?</span>
+                            <button type="button" class="location-select-btn" id="hotel-location-btn">
+                                <span id="hotel-location-value">Lagos</span>
+                            </button>
+                        </div>
+
+                        <button type="button" class="hotel-clear-btn" id="hotel-location-clear" aria-label="Clear destination">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <div class="location-dropdown" id="hotel-location-dropdown">
+                            <div class="location-optgroup-label">Nigerian States</div>
+                            <!-- 36 states + FCT populated by hotel-search.js -->
+                        </div>
+                    </div>
+
+                    <div class="hotel-divider"></div>
+
+                    <!-- DATES -->
+                    <div class="hotel-field hotel-dates" id="hotel-dates-field">
+                        <i class="fa-solid fa-calendar-days hotel-field-icon"></i>
+
+                        <div class="hotel-field-body">
+                            <span class="field-label">Check-in — Check-out</span>
+                            <button type="button" class="location-select-btn" id="hotel-dates-btn">
+                                <span id="hotel-checkin-value">Thu, Sep 10</span>
+                                <span class="date-sep">–</span>
+                                <span id="hotel-checkout-value">Fri, Sep 11</span>
+                            </button>
+                        </div>
+
+                        <span class="night-badge" id="hotel-night-badge">1 night</span>
+
+                        <div class="date-dropdown" id="hotel-date-dropdown">
+                            <!-- calendar rendered by hotel-search.js -->
+                        </div>
+                    </div>
+
+                    <div class="hotel-divider"></div>
+
+                    <!-- GUESTS -->
+                    <div class="hotel-field hotel-guests" id="hotel-guests-field">
+                        <i class="fa-solid fa-user hotel-field-icon"></i>
+
+                        <div class="hotel-field-body pax-wrapper">
+                            <span class="field-label">Guests</span>
+                            <button type="button" class="pax-display" id="hotel-guests-btn">
+                                1 room, 2 adults, 0 children
+                            </button>
+
+                            <div class="pax-dropdown" id="hotel-guests-dropdown">
+
+                                <div class="pax-row">
+                                    <span class="pax-label">Rooms</span>
+                                    <div class="pax-stepper">
+                                        <button type="button" class="pax-step-btn" data-action="dec" data-field="rooms" aria-label="Decrease rooms">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                        <span class="pax-count" id="hotel-rooms-count">1</span>
+                                        <button type="button" class="pax-step-btn" data-action="inc" data-field="rooms" aria-label="Increase rooms">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="pax-row">
+                                    <span class="pax-label">Adults</span>
+                                    <div class="pax-stepper">
+                                        <button type="button" class="pax-step-btn" data-action="dec" data-field="adults" aria-label="Decrease adults">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                        <span class="pax-count" id="hotel-adults-count">2</span>
+                                        <button type="button" class="pax-step-btn" data-action="inc" data-field="adults" aria-label="Increase adults">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="pax-row pax-row-last">
+                                    <span class="pax-label">Children</span>
+                                    <div class="pax-stepper">
+                                        <button type="button" class="pax-step-btn" data-action="dec" data-field="children" aria-label="Decrease children">
+                                            <i class="fa-solid fa-minus"></i>
+                                        </button>
+                                        <span class="pax-count" id="hotel-children-count">0</span>
+                                        <button type="button" class="pax-step-btn" data-action="inc" data-field="children" aria-label="Increase children">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="pax-done" id="hotel-guests-done">Done</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEARCH -->
+                    <div class="search-btn">
+                        <button type="button" class="btn-search" id="hotel-search-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Search
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+
+
+<!-- ================================================
+     SEARCH RESULTS (shown after a state search;
+     hidden by default — see hotel.js)
+     ================================================ -->
+
+<div class="search-results-section" id="search-results-section">
+
+    <div class="search-results-header">
+        <h2 class="hotel-section-title" id="search-results-title">Search results</h2>
+
+        <button type="button" class="clear-search-btn" id="clear-search-btn">
+            <i class="fa-solid fa-xmark"></i>
+            Clear search
+        </button>
+    </div>
+
+    <div class="search-results-grid" id="search-results-grid"></div>
+
+</div>
+
+
+<!--
+    Drop this in your hotel page below the search bar section.
+    Each hotel-card has ONE image slot:
+
+        <img class="hotel-card-img" src="/images/hotels/____.jpg" alt="...">
+
+    Just swap the src on each <img> for a real photo — everything else
+    (badge, name, stars, address, price) already has the styling
+    wired up in index.css, and the row scrolls/snaps horizontally
+    with the arrow buttons already working (see hotel-search.js).
+-->
+
+<div class="hotel-sections" id="hotel-browse-sections">
+
+    <!-- ================================================
+         TOP LUXURY 5-STAR HOTELS
+         ================================================ -->
+
+    <section class="hotel-section">
+
+        <h2 class="hotel-section-title">Top luxury 5-star hotels</h2>
+
+        <div class="hotel-scroll-wrap">
+
+            <button type="button" class="hotel-scroll-btn scroll-left" aria-label="Scroll left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="hotel-cards" id="luxury-hotels-track">
+
+                <article class="hotel-card" data-hotel="regal-airport-hotel" tabindex="0" role="button" aria-label="View Regal Airport Hotel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/lux1.jpg" alt="Regal Airport Hotel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.5/10</span>
+                            <span class="rating-reviews">11,660 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Regal Airport Hotel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">No.9 Cheong Tat Rd, Chek Lap Kok | 24.16KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦145,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="crowne-plaza-shanghai" tabindex="0" role="button" aria-label="View Crowne Plaza SHANGHAI NANJING ROAD by IHG">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux2.jpg" alt="Crowne Plaza Shanghai Nanjing Road by IHG">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.3/10</span>
+                            <span class="rating-reviews">11,758 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Crowne Plaza SHANGHAI NANJING ROAD by IHG
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">No. 719 Nanjing East Road, North Gate, No. 700 Jiujiang Road, South Gate | 0.54KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦145,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="twin-towers-hotel" tabindex="0" role="button" aria-label="View Twin Towers Hotel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux3.jpg" alt="Twin Towers Hotel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.5/10</span>
+                            <span class="rating-reviews">5,002 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Twin Towers Hotel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">88 Rama VI Rd, Khwaeng Rong Muang, Khet | 2.01KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦45,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="asia-international-hotel" tabindex="0" role="button" aria-label="View Asia International Hotel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux4.jpg" alt="Asia International Hotel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.2/10</span>
+                            <span class="rating-reviews">2,791 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Asia International Hotel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">No. 326-1 Huanshi East Road | 4.59KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦109,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="lagos-marina-grand-hotel" tabindex="0" role="button" aria-label="View Lagos Marina Grand Hotel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux5.jpg" alt="Lagos Marina Grand Hotel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.0/10</span>
+                            <span class="rating-reviews">6,240 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Lagos Marina Grand Hotel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">1 Marina Road, Lagos Island | 1.2KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦180,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="eko-atlantic-bay-resort" tabindex="0" role="button" aria-label="View Eko Atlantic Bay Resort">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux6.jpg" alt="Eko Atlantic Bay Resort">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.4/10</span>
+                            <span class="rating-reviews">4,180 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Eko Atlantic Bay Resort
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">Eko Atlantic City, Victoria Island | 3.4KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦225,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="burj-al-nile-hotel" tabindex="0" role="button" aria-label="View Burj Al Nile Hotel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux7.jpg" alt="Burj Al Nile Hotel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.1/10</span>
+                            <span class="rating-reviews">7,320 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Burj Al Nile Hotel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">Corniche Avenue, Abu Dhabi | 2.8KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦315,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="the-continental-grand" tabindex="0" role="button" aria-label="View The Continental Grand">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/ux8.jpg" alt="The Continental Grand">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.9/10</span>
+                            <span class="rating-reviews">9,015 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            The Continental Grand
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">45 Park Lane, London | 0.9KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦390,000</strong></p>
+                    </div>
+                </article>
+
+            </div>
+
+            <button type="button" class="hotel-scroll-btn scroll-right" aria-label="Scroll right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         BUDGET-FRIENDLY PROPERTIES WORLDWIDE
+         ================================================ -->
+
+    <section class="hotel-section">
+
+        <h2 class="hotel-section-title">Budget-friendly properties worldwide</h2>
+
+        <div class="hotel-scroll-wrap">
+
+            <button type="button" class="hotel-scroll-btn scroll-left" aria-label="Scroll left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="hotel-cards" id="budget-hotels-track">
+
+                <article class="hotel-card" data-hotel="gostops-amritsar" tabindex="0" role="button" aria-label="View Gostops Amritsar, Golden Temple">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud1.jpg" alt="Gostops Amritsar, Golden Temple">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.7/10</span>
+                            <span class="rating-reviews">110 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Gostops Amritsar, Golden Temple
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">44 kishangarh colony b/s Gurdwara baba deep singh ji Chattiwind, gate | 2.32KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦4,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="the-hosteller-amritsar" tabindex="0" role="button" aria-label="View The Hosteller Amritsar, Near Golden Temple">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud2.jpg" alt="The Hosteller Amritsar, Near Golden Temple">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.8/10</span>
+                            <span class="rating-reviews">43 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            The Hosteller Amritsar, Near Golden Temple
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">City Centre, 91 - 92, Ram Talai Rd, near Guru Nanak Bhawan, Phoola Singh Burj | 1.56KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦4,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="hostel-66-chongqing" tabindex="0" role="button" aria-label="View 66 Hostel (Jiefangbei Area/Hong Ya Dong)">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud3.jpg" alt="66 Hostel (Jiefangbei Area/Hong Ya Dong)">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.6/10</span>
+                            <span class="rating-reviews">93 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            66 Hostel (Jiefangbei Area/Hong Ya Dong)
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">Room 16, 30th Floor, Xin Chongqing Apartment, No. 18 Minzu Road | 2.94KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦4,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="mint-hostel" tabindex="0" role="button" aria-label="View Mint Hostel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud4.jpg" alt="Mint Hostel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">7.2/10</span>
+                            <span class="rating-reviews">376 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Mint Hostel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">316/1 Prachathipatai Rd, Ban Phan Thom | 4.54KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦4,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="sunrise-backpackers-lodge" tabindex="0" role="button" aria-label="View Sunrise Backpackers Lodge">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud5.jpg" alt="Sunrise Backpackers Lodge">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.4/10</span>
+                            <span class="rating-reviews">214 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Sunrise Backpackers Lodge
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">12 Ikeja Close, Lagos | 3.1KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦7,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="green-leaf-guest-rooms" tabindex="0" role="button" aria-label="View Green Leaf Guest Rooms">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud6.jpg" alt="Green Leaf Guest Rooms">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.1/10</span>
+                            <span class="rating-reviews">98 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Green Leaf Guest Rooms
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">Plot 7, Wuse Zone 2, Abuja | 1.8KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦9,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="nomads-rest-hostel" tabindex="0" role="button" aria-label="View Nomad's Rest Hostel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud7.jpg" alt="Nomad's Rest Hostel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.9/10</span>
+                            <span class="rating-reviews">502 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Nomad's Rest Hostel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">22 Rue de la Paix, Marrakech | 0.9KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦6,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="harbor-view-inn" tabindex="0" role="button" aria-label="View Harbor View Inn">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/bud8.jpg" alt="Harbor View Inn">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">7.9/10</span>
+                            <span class="rating-reviews">167 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Harbor View Inn
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">8 Quayside Rd, Mombasa | 2.5KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦7,500</strong></p>
+                    </div>
+                </article>
+
+            </div>
+
+            <button type="button" class="hotel-scroll-btn scroll-right" aria-label="Scroll right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         TRENDING GUEST HOUSES WORLDWIDE
+         ================================================ -->
+
+    <section class="hotel-section">
+
+        <h2 class="hotel-section-title">Trending guest houses </h2>
+
+        <div class="hotel-scroll-wrap">
+
+            <button type="button" class="hotel-scroll-btn scroll-left" aria-label="Scroll left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="hotel-cards" id="trending-hotels-track">
+
+                <article class="hotel-card" data-hotel="dayin-youth-hostel" tabindex="0" role="button" aria-label="View Dayin International Youth Hostel (East Nanjing Road & The Bund)">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trend1.png" alt="Dayin International Youth Hostel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.5/10</span>
+                            <span class="rating-reviews">8,466 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Dayin International Youth Hostel (East Nanjing Road &amp; The Bund)
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">No. 98 Liuhe Road | 0.68KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦19,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="poshpacker-chengdu" tabindex="0" role="button" aria-label="View POSHPACKER Chengdu Flipflop Hostel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trend2.jpg" alt="POSHPACKER Chengdu Flipflop Hostel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.2/10</span>
+                            <span class="rating-reviews">3,533 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            POSHPACKER Chengdu Flipflop Hostel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">3rd Floor, No. 98 Dongsheng Street | 1.4KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦10,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="monday-capsule-bangkok" tabindex="0" role="button" aria-label="View Monday Capsule Hostel and Thai Traditional Bath Bangkok">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trnd3.jpg" alt="Monday Capsule Hostel and Thai Traditional Bath Bangkok">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.6/10</span>
+                            <span class="rating-reviews">781 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Monday Capsule Hostel and Thai Traditional Bath Bangkok
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">28/8 Rong Mai Alley The Green Complex Building (2nd Floor) | 4.89KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦4,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="the-twizt-hostel" tabindex="0" role="button" aria-label="View The Twizt - Lifestyle Hostel & Hotel">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trnd4.jpg" alt="The Twizt - Lifestyle Hostel & Hotel">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.3/10</span>
+                            <span class="rating-reviews">369 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            The Twizt - Lifestyle Hostel &amp; Hotel
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">16th Ave St | 0.41KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦12,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="riverside-boutique-guesthouse" tabindex="0" role="button" aria-label="View Riverside Boutique Guesthouse">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trnd5.jpg" alt="Riverside Boutique Guesthouse">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.0/10</span>
+                            <span class="rating-reviews">1,204 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Riverside Boutique Guesthouse
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">14 River Rd, Calabar | 1.1KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦27,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="studio-88-guest-house" tabindex="0" role="button" aria-label="View Studio 88 Guest House">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trnd6.jpg" alt="Studio 88 Guest House">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.7/10</span>
+                            <span class="rating-reviews">674 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Studio 88 Guest House
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">88 Craft Lane, Cape Town | 2.0KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦33,000</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="casa-bella-guest-rooms" tabindex="0" role="button" aria-label="View Casa Bella Guest Rooms">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trnd7.jpg" alt="Casa Bella Guest Rooms">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">9.1/10</span>
+                            <span class="rating-reviews">2,310 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            Casa Bella Guest Rooms
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">Via Roma 21, Florence | 0.6KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦40,500</strong></p>
+                    </div>
+                </article>
+
+                <article class="hotel-card" data-hotel="the-palm-courtyard" tabindex="0" role="button" aria-label="View The Palm Courtyard">
+                    <div class="hotel-card-image">
+                        <img class="hotel-card-img" src="/images/trnd8.jpg" alt="The Palm Courtyard">
+                        <div class="hotel-card-rating">
+                            <span class="rating-score">8.8/10</span>
+                            <span class="rating-reviews">940 reviews</span>
+                        </div>
+                    </div>
+                    <div class="hotel-card-body">
+                        <h3 class="hotel-card-name">
+                            The Palm Courtyard
+                            <span class="hotel-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </span>
+                        </h3>
+                        <p class="hotel-card-address">Palm Grove Ave, Zanzibar | 1.7KM from city center</p>
+                        <p class="hotel-card-price"><span>From</span> <strong>₦22,500</strong></p>
+                    </div>
+                </article>
+
+            </div>
+
+            <button type="button" class="hotel-scroll-btn scroll-right" aria-label="Scroll right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+</div>  
+
+
+
+
+<div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease currently supports six Nigerian locations: Lagos, Port Harcourt, Abuja, Akure, Enugu, and Bauchi."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="/js/hotel-data.js"></script>
+<script src="/js/loader.js"></script>
+<script src="/js/robot.js"></script>
+    <script src="/js/hotel.js"></script>
+</body>
+
+</html>

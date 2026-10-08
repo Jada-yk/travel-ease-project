@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/hotel.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <link rel="stylesheet" href="/css/robot.css">
+    <title>Hotel Details</title>
+</head>
+
+<body class="stay-theme">
+
+    <header>
+
+        <nav style="background-color:#1669ed ;">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <a href="tripCo.html"></a>
+                <img src="/images/logo.png" alt="Travel Ease Logo" class="logo-img">
+                <span class="logo-text">
+                    Travel Ease
+                </span>
+                </a>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-items">
+                    <a href="index.html" class="nav-link">
+                        Flights
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="hotel.html" class="nav-link active">
+                        Hotels
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="attraction.html" class="nav-link">
+                        Attractions
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/car.html" class="nav-link">
+                        Car servuces
+                    </a>
+                </li>
+
+                <!-- MY BOOKINGS -->
+                <li class="nav-items">
+                    <a href="bookings.html" class="nav-link bookings-link">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                        My Bookings
+                        <span class="bookings-badge" id="bookings-badge" hidden>0</span>
+                    </a>
+                </li>
+
+
+                <!-- SIGN IN / REGISTER -->
+                <li class="nav-items">
+
+                    <button class="signin-btn" id="sign-in-button" type="button">
+                        Sign in / Register
+                    </button>
+
+                </li>
+
+            </ul>
+
+
+            <!-- HAMBURGER -->
+            <div class="menu-part" id="menu-button">
+
+                <i class="fa-solid fa-bars menu-bar" id="open-menu"></i>
+
+                <i class="fa-solid fa-xmark close-menu" id="close-menu"></i>
+
+            </div>
+
+        </nav>
+
+
+        <!-- BACKDROP -->
+        <div class="backdrop" id="backdrop"></div>
+
+
+
+    </header>
+
+
+    <section class="details-page">
+
+        <a href="hotel.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to search results
+        </a>
+
+        <div class="details-layout">
+
+            <!-- MAIN CONTENT -->
+            <div class="details-main">
+
+                <div class="details-hero-image">
+                    <img id="details-hero-img" src="" alt="">
+                </div>
+
+                <div class="details-info">
+
+                    <h1 class="details-name" id="details-name"></h1>
+
+                    <div class="details-meta">
+                        <span class="rating-score" id="details-score"></span>
+                        <span class="rating-reviews" id="details-reviews"></span>
+                        <span class="hotel-stars" id="details-stars"></span>
+                    </div>
+
+                    <p class="details-address">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="details-address-text"></span>
+                    </p>
+
+                    <p class="details-description" id="details-description"></p>
+
+                    <h2 class="details-subheading">What this place offers</h2>
+
+                    <div class="amenities-grid" id="details-amenities"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOKING PANEL -->
+            <aside class="booking-panel">
+
+                <div class="booking-price">
+                    <strong id="booking-price-per-night">₦0</strong>
+                    <span>/ night</span>
+                </div>
+
+                <!-- DATES -->
+                <div class="booking-field" id="booking-dates-field">
+                    <span class="field-label">Check-in — Check-out</span>
+
+                    <button type="button" class="location-select-btn" id="booking-dates-btn">
+                        <span id="booking-checkin-value">Select date</span>
+                        <span class="date-sep">–</span>
+                        <span id="booking-checkout-value">Select date</span>
+                    </button>
+
+                    <div class="date-dropdown" id="booking-date-dropdown"></div>
+                </div>
+
+                <!-- GUESTS -->
+                <div class="booking-field" id="booking-guests-field">
+                    <span class="field-label">Guests</span>
+
+                    <button type="button" class="pax-display" id="booking-guests-btn">
+                        1 room, 2 adults, 0 children
+                    </button>
+
+                    <div class="pax-dropdown" id="booking-guests-dropdown">
+
+                        <div class="pax-row">
+                            <span class="pax-label">Rooms</span>
+                            <div class="pax-stepper">
+                                <button type="button" class="pax-step-btn" data-action="dec" data-field="rooms" aria-label="Decrease rooms">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span class="pax-count" id="booking-rooms-count">1</span>
+                                <button type="button" class="pax-step-btn" data-action="inc" data-field="rooms" aria-label="Increase rooms">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pax-row">
+                            <span class="pax-label">Adults</span>
+                            <div class="pax-stepper">
+                                <button type="button" class="pax-step-btn" data-action="dec" data-field="adults" aria-label="Decrease adults">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span class="pax-count" id="booking-adults-count">2</span>
+                                <button type="button" class="pax-step-btn" data-action="inc" data-field="adults" aria-label="Increase adults">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pax-row pax-row-last">
+                            <span class="pax-label">Children</span>
+                            <div class="pax-stepper">
+                                <button type="button" class="pax-step-btn" data-action="dec" data-field="children" aria-label="Decrease children">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span class="pax-count" id="booking-children-count">0</span>
+                                <button type="button" class="pax-step-btn" data-action="inc" data-field="children" aria-label="Increase children">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="button" class="pax-done" id="booking-guests-done">Done</button>
+
+                    </div>
+                </div>
+
+                <!-- SUMMARY -->
+                <div class="booking-summary">
+                    <div class="booking-summary-row">
+                        <span id="booking-nights-label">Select dates to see total</span>
+                        <span id="booking-subtotal"></span>
+                    </div>
+                    <div class="booking-summary-total">
+                        <span>Total</span>
+                        <strong id="booking-total">₦0</strong>
+                    </div>
+                </div>
+
+                <button type="button" class="booking-reserve-btn" id="booking-reserve-btn">
+                    Reserve
+                </button>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+    <div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease currently supports six Nigerian locations: Lagos, Port Harcourt, Abuja, Akure, Enugu, and Bauchi."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="/js/hotel-data.js"></script>
+    <script src="/js/hotel.js"></script>
+    <script src="/js/hotel-details.js"></script>
+    <script src="/js/robot.js"></script>
+
+</body>
+
+</html>

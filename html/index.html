@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/robot.css">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Travel Ease</title>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
+    <header>
+
+        <nav>
+
+            <!-- LOGO -->
+            <a href="/html/tripCo.html" class="logo" aria-label="TravelEase home">
+
+                <img
+                    src="/images/logo.png"
+                    alt="Travel Ease Logo"
+                    class="logo-img"
+                > 
+
+                <span class="logo-text">
+                    Travel Ease
+                </span>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+            <ul class="nav-list" id="nav-menu">
+
+                <li class="nav-items">
+                    <a href="/html/index.html" class="nav-link active">
+                        Flights
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/hotel.html" class="nav-link">
+                        Hotels
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/attraction.html" class="nav-link">
+                        Attractions
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/car.html" class="nav-link">
+                        Car services
+                    </a>
+                </li>
+
+
+                <!-- SIGN IN / REGISTER -->
+                <li class="nav-items">
+
+                    <button
+                        class="signin-btn"
+                        id="sign-in-button"
+                        type="button"
+                    >
+                        Sign in / Register
+                    </button>
+
+                </li>
+
+            </ul>
+
+
+            <!-- HAMBURGER -->
+            <div class="menu-part" id="menu-button">
+
+                <i
+                    class="fa-solid fa-bars menu-bar"
+                    id="open-menu"
+                ></i>
+
+                <i
+                    class="fa-solid fa-xmark close-menu"
+                    id="close-menu"
+                ></i>
+
+            </div>
+
+        </nav>
+
+
+        <!-- BACKDROP -->
+        <div
+            class="backdrop"
+            id="backdrop"
+        ></div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN WHITE BACKGROUND
+         ========================================================= -->
+
+    <div class="white-background">
+
+        <main>
+
+            <!-- SEARCH SECTION -->
+            <div class="second-part">
+
+                <section class="search">
+
+                    <div class="search-part">
+
+                        <!-- TRIP TYPE -->
+                        <div class="top-section">
+
+                            <form>
+
+                                <span class="input">
+
+                                    <input
+                                        type="radio"
+                                        name="tripType"
+                                        id="roundTrip"
+                                        value="roundTrip"
+                                        checked
+                                    >
+
+                                    <label for="roundTrip">
+                                        Round trip
+                                    </label>
+
+                                </span>
+
+
+                                <span class="input">
+
+                                    <input
+                                        type="radio"
+                                        name="tripType"
+                                        id="oneWay"
+                                        value="oneWay"
+                                    >
+
+                                    <label for="oneWay">
+                                        One way
+                                    </label>
+
+                                </span>
+
+
+                                <span class="input">
+
+                                    <input
+                                        type="radio"
+                                        name="tripType"
+                                        id="multiCity"
+                                        value="multiCity"
+                                    >
+
+                                    <label for="multiCity">
+                                        Multi City
+                                    </label>
+
+                                </span>
+
+
+                                <span class="line"></span>
+
+
+                                <span class="input">
+
+                                    <input
+                                        type="checkbox"
+                                        id="directFlight"
+                                    >
+
+                                    <label for="directFlight">
+                                        Nonstop
+                                    </label>
+
+                                </span>
+
+                            </form>
+
+                        </div>
+
+
+                        <!-- SEARCH FIELDS -->
+                        <div class="lower-section">
+
+                            <!-- LOCATIONS -->
+                            <div class="locations">
+
+                                <!-- FROM -->
+                                <div class="first-location location-field" id="from-field">
+
+                                    <label class="field-label">
+                                        From
+                                    </label>
+
+                                    <button
+                                        type="button"
+                                        class="location-select-btn"
+                                        id="from-city-btn"
+                                        aria-haspopup="listbox"
+                                        aria-expanded="false"
+                                    >
+                                        <span id="from-city-text">
+                                            Select departure state
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+
+                                    <select
+                                        class="location-select-native"
+                                        id="from-city"
+                                        tabindex="-1"
+                                        aria-hidden="true"
+                                    >
+                                    </select>
+
+                                    <div
+                                        class="location-dropdown"
+                                        id="from-city-dropdown"
+                                        role="listbox"
+                                    >
+                                    </div>
+
+                                </div>
+
+
+                                <!-- SWAP -->
+                                <button
+                                    class="swap"
+                                    id="swap-btn"
+                                    type="button"
+                                    aria-label="Swap locations"
+                                >
+
+                                    <i class="fa-solid fa-right-left"></i>
+
+                                </button>
+
+
+                                <!-- TO -->
+                                <div class="second-location location-field" id="to-field">
+
+                                    <label class="field-label">
+                                        To
+                                    </label>
+
+                                    <button
+                                        type="button"
+                                        class="location-select-btn"
+                                        id="to-city-btn"
+                                        aria-haspopup="listbox"
+                                        aria-expanded="false"
+                                    >
+                                        <span id="to-city-text">
+                                            Select destination state
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+
+                                    <select
+                                        class="location-select-native"
+                                        id="to-city"
+                                        tabindex="-1"
+                                        aria-hidden="true"
+                                    >
+                                    </select>
+
+                                    <div
+                                        class="location-dropdown"
+                                        id="to-city-dropdown"
+                                        role="listbox"
+                                    >
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DATE / PASSENGERS / SEARCH -->
+                            <div class="sec-lower">
+
+                                <!-- DATE -->
+                                <div class="date">
+
+                                    <label
+                                        class="field-label"
+                                        for="travel-date"
+                                        id="departure-date-label"
+                                    >
+                                        Date
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        class="date-input"
+                                        id="travel-date"
+                                    >
+
+                                </div>
+
+
+                                <!-- RETURN DATE (round trip only) -->
+                                <div class="date" id="return-date-field">
+
+                                    <label
+                                        class="field-label"
+                                        for="return-date"
+                                    >
+                                        Return
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        class="date-input"
+                                        id="return-date"
+                                    >
+
+                                </div>
+
+
+                                <!-- PASSENGERS -->
+                                <div
+                                    class="flight-type pax-wrapper"
+                                    id="pax-wrapper"
+                                >
+
+                                    <label class="field-label">
+                                        Passengers & Class
+                                    </label>
+
+                                    <div
+                                        class="pax-display"
+                                        id="pax-display"
+                                    >
+                                        1 adult · Economy
+                                    </div>
+
+
+                                    <!-- PASSENGER DROPDOWN -->
+                                    <div
+                                        class="pax-dropdown"
+                                        id="pax-dropdown"
+                                    >
+
+                                        <!-- ADULTS -->
+                                        <div class="pax-row">
+
+                                            <span class="pax-label">
+                                                Adults
+                                            </span>
+
+                                            <select
+                                                class="pax-select"
+                                                id="pax-adults"
+                                            >
+
+                                                <option value="1" selected>
+                                                    1
+                                                </option>
+
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+
+                                            </select>
+
+                                        </div>
+
+
+                                        <!-- CHILDREN -->
+                                        <div class="pax-row">
+
+                                            <span class="pax-label">
+                                                Children
+                                            </span>
+
+                                            <select
+                                                class="pax-select"
+                                                id="pax-children"
+                                            >
+
+                                                <option value="0" selected>
+                                                    0
+                                                </option>
+
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                            </select>
+
+                                        </div>
+
+
+                                        <!-- CABIN -->
+                                        <div class="pax-row pax-row-last">
+
+                                            <span class="pax-label">
+                                                Cabin class
+                                            </span>
+
+                                            <select
+                                                class="pax-select"
+                                                id="pax-class"
+                                            >
+
+                                                <option value="Economy">
+                                                    Economy
+                                                </option>
+
+                                                <option value="Business">
+                                                    Business
+                                                </option>
+
+                                                <option value="Premium">
+                                                    Premium
+                                                </option>
+
+                                            </select>
+
+                                        </div>
+
+
+                                        <button
+                                            class="pax-done"
+                                            id="pax-done"
+                                            type="button"
+                                        >
+                                            Done
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- SEARCH BUTTON -->
+                                <div class="search-btn">
+
+                                    <button
+                                        class="btn-search"
+                                        id="search-flights"
+                                        type="button"
+                                    >
+
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                                        Search
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MULTI-CITY EXTRA FLIGHTS -->
+                        <div class="multi-city-legs" id="multi-city-legs"></div>
+
+                        <button
+                            type="button"
+                            class="add-flight-btn"
+                            id="add-flight-btn"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            Add another flight
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+
+        <!-- =====================================================
+             FLIGHTS TABLE
+             ===================================================== -->
+
+        <div
+            class="table-section"
+            id="flights-table-section"
+        >
+
+            <div class="flights-container">
+
+                <div class="table-header">
+
+                    <h2>
+                        Available Flights
+                    </h2>
+
+                    <p id="route-info">
+                        Select your route and click Search
+                    </p>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="flights-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Airline</th>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Duration</th>
+                                <th>Class</th>
+                                <th>Price</th>
+                                <th>Book</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr
+                                id="no-results-row"
+                                style="display: none;"
+                            >
+
+                                <td
+                                    colspan="7"
+                                    class="no-results-cell"
+                                >
+                                    No flights available for the selected cabin class.
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="flight-row" data-stops="0">
+
+                                <td>
+                                    Air Peace
+                                </td>
+
+                                <td>
+                                    08:00 AM
+                                </td>
+
+                                <td>
+                                    09:30 AM
+                                </td>
+
+                                <td>
+                                    1h 30m
+                                </td>
+
+                                <td class="cell-class">
+                                    Economy
+                                </td>
+
+                                <td>
+                                    ₦45,000
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="btn-book"
+                                        type="button"
+                                    >
+                                        Book
+                                    </button>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="flight-row" data-stops="0">
+
+                                <td>
+                                    Dana Air
+                                </td>
+
+                                <td>
+                                    10:15 AM
+                                </td>
+
+                                <td>
+                                    11:45 AM
+                                </td>
+
+                                <td>
+                                    1h 30m
+                                </td>
+
+                                <td class="cell-class">
+                                    Economy
+                                </td>
+
+                                <td>
+                                    ₦42,500
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="btn-book"
+                                        type="button"
+                                    >
+                                        Book
+                                    </button>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="flight-row" data-stops="0">
+
+                                <td>
+                                    Arik Air
+                                </td>
+
+                                <td>
+                                    12:30 PM
+                                </td>
+
+                                <td>
+                                    02:00 PM
+                                </td>
+
+                                <td>
+                                    1h 30m
+                                </td>
+
+                                <td class="cell-class">
+                                    Premium
+                                </td>
+
+                                <td>
+                                    ₦65,000
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="btn-book"
+                                        type="button"
+                                    >
+                                        Book
+                                    </button>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="flight-row" data-stops="1">
+
+                                <td>
+                                    Overland Airways
+                                </td>
+
+                                <td>
+                                    03:45 PM
+                                </td>
+
+                                <td>
+                                    05:15 PM
+                                </td>
+
+                                <td>
+                                    1h 30m
+                                </td>
+
+                                <td class="cell-class">
+                                    Economy
+                                </td>
+
+                                <td>
+                                    ₦40,000
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="btn-book"
+                                        type="button"
+                                    >
+                                        Book
+                                    </button>
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="flight-row" data-stops="0">
+
+                                <td>
+                                    United Airlines
+                                </td>
+
+                                <td>
+                                    05:00 PM
+                                </td>
+
+                                <td>
+                                    06:30 PM
+                                </td>
+
+                                <td>
+                                    1h 30m
+                                </td>
+
+                                <td class="cell-class">
+                                    Business
+                                </td>
+
+                                <td>
+                                    ₦95,000
+                                </td>
+
+                                <td>
+                                    <button
+                                        class="btn-book"
+                                        type="button"
+                                    >
+                                        Book
+                                    </button>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             FOOTER
+             ===================================================== -->
+
+        <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-column">
+
+                    <h3>
+                        Contact us
+                    </h3>
+
+                    <a href="#">
+                        Customer support
+                    </a>
+
+                    <a href="#">
+                        Service Guarantee
+                    </a>
+
+                    <a href="#">
+                        More service info
+                    </a>
+
+
+                    <div class="social-icons">
+
+                        <a href="#" class="icon">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#" class="icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <a href="#" class="icon">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        About
+                    </h3>
+
+                    <a href="#">
+                        About Travel Ease
+                    </a>
+
+                    <a href="#">
+                        Careers
+                    </a>
+
+                    <a href="#">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h3>
+                        Other services
+                    </h3>
+
+                    <a href="#">
+                        Travel Ease Rewards
+                    </a>
+
+                    <a href="#">
+                        List your property
+                    </a>
+
+                    <a href="#">
+                        All hotels
+                    </a>
+
+                    <a href="#">
+                        Security
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+        <footer class="small-screen">
+
+            <h4>
+                Group C project all rights reserved @2026
+            </h4>
+
+        </footer>
+
+    </div>
+
+<!-- =================================
+     TRAVEL EASE ROBOT
+================================= -->
+
+<div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease supports flights across all 36 Nigerian states plus the FCT, along with popular international destinations including London, Dubai, Doha, Accra, Johannesburg, Nairobi, Addis Ababa, Istanbul, Paris, Amsterdam, New York, and Atlanta."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/index.js"></script>
+    <script src="../js/loader.js"></script>
+    <script src="../js/robot.js"></script>
+
+
+</body>
+
+</html>

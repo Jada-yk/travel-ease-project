@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/index.css">
+    <a href="/html/tripCo.html">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+        </a>
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="/css/robot.css">
+
+    <title>Card Details — Travel Ease</title>
+</head>
+
+<body>
+
+    <header>
+
+        <nav >
+
+            <div class="logo">
+                <a href="tripCo.html">
+                <img src="/images/logo.png" alt="Travel Ease Logo" class="logo-img">
+                <span class="logo-text">Travel Ease</span>
+                </a>
+            </div>
+
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-items"><a href="index.html" class="nav-link active">Flights</a></li>
+                <li class="nav-items"><a href="hotel.html" class="nav-link">Hotels</a></li>
+                <li class="nav-items"><a href="attraction.html" class="nav-link">Attractions</a></li>
+                <li class="nav-items"><a href="/html/car.html" class="nav-link">Car services</a></li>
+
+                <li class="nav-items">
+                    <button class="signin-btn" id="sign-in-button" type="button">
+                        Sign in / Register
+                    </button>
+                </li>
+            </ul>
+
+            <div class="menu-part" id="menu-button">
+                <i class="fa-solid fa-bars menu-bar" id="open-menu"></i>
+                <i class="fa-solid fa-xmark close-menu" id="close-menu"></i>
+            </div>
+
+        </nav>
+
+        <div class="backdrop" id="backdrop"></div>
+
+    </header>
+
+
+    <section class="booking-flow-page">
+
+        <!-- CHECKOUT VIEW -->
+        <div id="card-checkout-view">
+
+                <div class="form-card">
+
+                <h2>Credit/Debit Card Details</h2>
+                <p class="form-subtitle">Your payment is secure and encrypted.</p>
+
+                <div id="card-error-container"></div>
+
+                <form id="cardPaymentForm" autocomplete="off">
+
+                    <label for="cardNumber">Card Number</label>
+                    <input
+                        type="text"
+                        id="cardNumber"
+                        name="card-number-field"
+                        placeholder="1234 5678 9012 3456"
+                        inputmode="numeric"
+                        maxlength="19"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <div class="form-row cols-2">
+                        <div>
+                            <label for="cardExpiry">Expiry Date</label>
+                            <input type="text" id="cardExpiry" name="card-expiry-field" placeholder="MM / YY" maxlength="7" autocomplete="off" required>
+                        </div>
+                        <div>
+                            <label for="cardCvv">CVV</label>
+                            <input type="text" id="cardCvv" name="card-cvv-field" placeholder="123" inputmode="numeric" maxlength="4" autocomplete="off" required>
+                        </div>
+                    </div>
+
+                    <label for="cardName">Name on Card</label>
+                    <input type="text" id="cardName" name="card-name-field" placeholder="e.g. Adeola Johnson" autocomplete="off" required>
+
+                    <div class="save-card-row">
+                        <input type="checkbox" id="saveCard">
+                        <label for="saveCard" style="margin: 0; font-weight: 500;">
+                            Save card for future payments
+                        </label>
+                    </div>
+
+                    <button type="submit" class="continue-login" id="payNowBtn">
+                        Pay <span id="pay-amount">₦0</span>
+                    </button>
+
+                    <div class="secure-note">
+                        <i class="fa-solid fa-lock"></i>
+                        Your payment information is secure.
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUCCESS VIEW -->
+        <div id="payment-success-view" hidden>
+
+            <div class="payment-success-card">
+
+                <div class="payment-success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <h2>Payment Successful!</h2>
+                <p>Your booking has been confirmed.</p>
+
+                <div class="booking-ref-box">
+                    <span>Booking Reference</span>
+                    <strong id="booking-reference-text"></strong>
+                </div>
+
+                <div class="payment-success-actions">
+                    <button type="button" class="continue-login" id="view-booking-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        View Booking Details
+                    </button>
+                    <button type="button" class="create-account" id="download-receipt-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Download Receipt
+                    </button>
+                </div>
+
+                <div class="email-note">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span id="confirmation-email-text">A confirmation email has been sent.</span>
+                </div>
+
+                <div style="margin-top: 22px;">
+                    <a href="index.html" class="btn-flow-back" style="justify-content: center;">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Back to Home
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    
+<div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease currently supports six Nigerian locations: Lagos, Port Harcourt, Abuja, Akure, Enugu, and Bauchi."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.6/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../js/booking-flow.js"></script>
+    <script src="../js/card-payment.js"></script>
+    <script src="/js/robot.js"></script>
+
+</body>
+
+</html>

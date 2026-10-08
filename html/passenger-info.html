@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Passenger Information — Travel Ease</title>
+</head>
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                <a href="tripCo.html"></a>
+                <img src="/images/logo.png" alt="Travel Ease Logo" class="logo-img">
+                <span class="logo-text">Travel Ease</span>
+                </a>
+            </div>
+
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-items"><a href="index.html" class="nav-link active">Flights</a></li>
+                <li class="nav-items"><a href="hotel.html" class="nav-link">Hotels</a></li>
+                <li class="nav-items"><a href="attraction.html" class="nav-link">Attractions</a></li>
+                <li class="nav-items"><a href="/html/car.html" class="nav-link">Car services</a></li>
+
+                <li class="nav-items">
+                    <button class="signin-btn" id="sign-in-button" type="button">
+                        Sign in / Register
+                    </button>
+                </li>
+            </ul>
+
+            <div class="menu-part" id="menu-button">
+                <i class="fa-solid fa-bars menu-bar" id="open-menu"></i>
+                <i class="fa-solid fa-xmark close-menu" id="close-menu"></i>
+            </div>
+
+        </nav>
+
+        <div class="backdrop" id="backdrop"></div>
+
+    </header>
+
+
+    <section class="booking-flow-page">
+
+        <div class="flight-summary-card" id="flight-summary"></div>
+
+        <div class="form-card">
+
+            <h2>Passenger Information</h2>
+            <p class="form-subtitle">Please fill in the details for all passengers.</p>
+
+            <form id="passengerForm">
+
+                <div class="form-section-title">1. Passenger 1 (Adult)</div>
+
+                <label for="passengerName">Full name (as on passport)</label>
+                <input type="text" id="passengerName" placeholder="e.g. Adeola Johnson" required>
+
+                <label>Date of birth</label>
+                <div class="form-row cols-3">
+                    <select id="dobDay" required>
+                        <option value="" disabled selected>Day</option>
+                    </select>
+                    <select id="dobMonth" required>
+                        <option value="" disabled selected>Month</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select id="dobYear" required>
+                        <option value="" disabled selected>Year</option>
+                    </select>
+                </div>
+
+                <label for="passengerGender">Gender</label>
+                <select id="passengerGender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other / Prefer not to say</option>
+                </select>
+
+                <label for="passportNumber">Passport number</label>
+                <input type="text" id="passportNumber" placeholder="e.g. A12345678" required>
+
+                <label for="nationality">Nationality</label>
+                <select id="nationality" required>
+                    <option value="" disabled selected>Select nationality</option>
+                    <option>Nigerian</option>
+                    <option>Ghanaian</option>
+                    <option>British</option>
+                    <option>American</option>
+                    <option>Canadian</option>
+                    <option>South African</option>
+                    <option>Kenyan</option>
+                    <option>Other</option>
+                </select>
+
+
+                <div class="form-section-title">2. Contact Information</div>
+
+                <label for="contactEmail">Email address</label>
+                <input type="email" id="contactEmail" placeholder="e.g. adeola@example.com" required>
+
+                <label for="contactPhone">Phone number</label>
+                <div class="form-row" style="grid-template-columns: 90px 1fr;">
+                    <select id="phoneCode">
+                        <option value="+234" selected>+234</option>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                        <option value="+27">+27</option>
+                        <option value="+233">+233</option>
+                    </select>
+                    <input type="tel" id="contactPhone" placeholder="e.g. 801 234 5678" required>
+                </div>
+
+                <div class="form-actions">
+                    <a href="index.html" class="btn-flow-back">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Back
+                    </a>
+                    <button type="submit" class="continue-login">
+                        Continue to Review
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <div class="robot">
+
+    <div class="travel-bot">
+
+        <div class="bot-tooltip">
+            Need help?
+        </div>
+
+        <button class="bot-button" id="botButton">
+            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+        </button>
+
+    </div>
+
+
+    <!-- =================================
+         BOT POPUP
+    ================================= -->
+
+    <div class="bot-popup" id="botPopup">
+
+        <div class="bot-card">
+
+            <!-- HEADER -->
+
+            <div class="bot-header">
+
+                <div class="bot-title">
+
+                    <div class="small-bot">
+                        <img src="/images/robot.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h3>Travel Ease</h3>
+                        <span>Travel Assistant</span>
+                    </div>
+
+                </div>
+
+                <button class="bot-close" id="botClose">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- QUESTIONS -->
+
+            <div class="bot-page" id="questionsPage">
+
+                <div class="bot-greeting">
+
+                    <h4>Hi there!</h4>
+
+                    <p>
+                        What would you like to know?
+                    </p>
+
+                </div>
+
+
+                <div class="question-list">
+
+                    <button
+                        class="question-btn"
+                        data-question="What does a travel visa mean?"
+                        data-answer="A travel visa is an official permission to enter or stay in another country for a specific purpose and period. Travel Ease focuses on helping you plan journeys within Nigeria."
+                    >
+                        <span>What does a travel visa mean?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Which locations does Travel Ease support?"
+                        data-answer="Travel Ease currently supports six Nigerian locations: Lagos, Port Harcourt, Abuja, Akure, Enugu, and Bauchi."
+                    >
+                        <span>Which locations are supported?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are cars and transportation available?"
+                        data-answer="Yes. Travel Ease is designed to help users find transportation options, including cars, for journeys between supported locations."
+                    >
+                        <span>Are cars available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Are hotels available?"
+                        data-answer="Yes. Hotel information can be provided to help you find accommodation for your trip."
+                    >
+                        <span>Are hotels available?</span>
+                        <b>›</b>
+                    </button>
+
+
+                    <button
+                        class="question-btn"
+                        data-question="Is Travel Ease budget-friendly?"
+                        data-answer="Travel Ease is designed to make travel planning easier and more affordable by helping users explore available transportation and accommodation options according to their budget."
+                    >
+                        <span>Is it budget-friendly?</span>
+                        <b>›</b>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 ANSWER PAGE
+            ================================= -->
+
+            <div class="bot-page answer-page" id="answerPage">
+
+                <button class="back-button" id="backButton">
+                    ← Back
+                </button>
+
+
+                <div class="answer-content">
+
+                    <div class="answer-icon">
+                        <img
+                            src="/images/robot.jpg"
+                            alt="Travel Ease Assistant"
+                        >
+                    </div>
+
+
+                    <p
+                        class="answer-question"
+                        id="answerQuestion"
+                    ></p>
+
+
+                    <div class="answer-line"></div>
+
+
+                    <p
+                        class="answer-text"
+                        id="answerText"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    <script src="../js/booking-flow.js"></script>
+    <script src="../js/passenger-info.js"></script>
+    <script src="/js/robot.js"></script>
+
+</body>
+
+</html>

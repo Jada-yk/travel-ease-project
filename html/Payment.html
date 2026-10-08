@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/robot.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" >
+
+    <link rel="stylesheet" href="/css/hotel.css">
+    <title>Payment</title>
+</head>
+
+<body class="stay-theme">
+
+    <header>
+
+        <nav style="background-color:#1669ed ;">
+
+            <!-- LOGO -->
+            <div class="logo">
+
+                <a href="tripCo.html">
+                <img src="/images/logo.png" alt="Travel Ease Logo" class="logo-img">
+                <span class="logo-text">
+                    Travel Ease
+                </span>
+                </a>
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <ul class="nav-list" id="nav-menu">
+                <li class="nav-items">
+                    <a href="/html/index.html" class="nav-link">
+                        Flights
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="hotel.html" class="nav-link active">
+                        Hotels
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="/html/attraction.html" class="nav-link">
+                        Attractions
+                    </a>
+                </li>
+
+                <li class="nav-items">
+                    <a href="/html/car.html" class="nav-link">
+                        Cars
+                    </a>
+                </li>
+
+                <!-- MY BOOKINGS -->
+                <li class="nav-items">
+                    <a href="bookings.html" class="nav-link bookings-link">
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+                        My Bookings
+                        <span class="bookings-badge" id="bookings-badge" hidden>0</span>
+                    </a>
+                </li>
+
+                <!-- SIGN IN / REGISTER -->
+                <li class="nav-items">
+                    <button class="signin-btn" id="sign-in-button" type="button">
+                        Sign in / Register
+                    </button>
+                </li>
+            </ul>
+
+
+            <!-- HAMBURGER -->
+            <div class="menu-part" id="menu-button">
+                <i class="fa-solid fa-bars menu-bar" id="open-menu"></i>
+                <i class="fa-solid fa-xmark close-menu" id="close-menu"></i>
+            </div>
+
+        </nav>
+
+
+        <!-- BACKDROP -->
+        <div class="backdrop" id="backdrop"></div>
+
+    </header>
+
+
+    <section class="payment-page" id="payment-page">
+
+        <a href="hotel.html" class="back-link" id="payment-back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to search results
+        </a>
+
+        <!-- CHECKOUT VIEW -->
+        <div class="payment-layout" id="payment-checkout-view">
+
+            <div class="payment-summary-card" id="payment-summary-card">
+                <!-- populated by payment.js -->
+            </div>
+
+            <div class="payment-form-card">
+
+                <h2 class="payment-form-title">Your details</h2>
+
+                <div id="payment-error-container"></div>
+
+                <form id="paymentForm" autocomplete="off">
+
+                    <label for="guestName">Full name</label>
+                    <input
+                        type="text"
+                        id="guestName"
+                        placeholder="Name for this booking"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <label for="guestContact">Phone number or email</label>
+                    <input
+                        type="text"
+                        id="guestContact"
+                        placeholder="So the hotel can reach you"
+                        autocomplete="tel"
+                        required
+                    >
+
+                    <button type="submit" class="continue-login" id="payNowBtn">
+                        Pay <span id="pay-now-amount">₦0</span>
+                    </button>
+
+                </form>
+
+                <p class="payment-form-note">
+                    Travel Ease connects you with the hotel — we don't collect card
+                    details. Confirming here saves your booking and gives you a
+                    receipt to show at check-in.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- SUCCESS VIEW (hidden until payment "succeeds") -->
+        <div class="payment-success" id="payment-success-view" hidden>
+
+            <div class="confirm-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <h2>Booking confirmed!</h2>
+
+            <p class="login-description" id="payment-success-message"></p>
+
+            <div class="receipt-frame">
+                <canvas id="receipt-canvas" width="900" height="420"></canvas>
+            </div>
+
+            <button type="button" class="receipt-download-btn" id="download-receipt-btn">
+                <i class="fa-solid fa-download"></i>
+                Download ticket
+            </button>
+
+            <div class="payment-success-actions">
+                <a href="bookings.html" class="continue-login payment-success-link">
+                    View my bookings
+                </a>
+                <a href="hotel.html" class="create-account payment-success-link">
+                    Back to hotels
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="robot">
+
+        <div class="travel-bot">
+
+            <div class="bot-tooltip">
+                Need help?
+            </div>
+
+            <button class="bot-button" id="botButton">
+                <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+            </button>
+
+        </div>
+
+        <div class="bot-popup" id="botPopup">
+
+            <div class="bot-card">
+
+                <div class="bot-header">
+
+                    <div class="bot-title">
+
+                        <div class="small-bot">
+                            <img src="/images/robot.jpg" alt="">
+                        </div>
+
+                        <div>
+                            <h3>Travel Ease</h3>
+                            <span>Travel Assistant</span>
+                        </div>
+
+                    </div>
+
+                    <button class="bot-close" id="botClose">
+                        &times;
+                    </button>
+
+                </div>
+
+                <div class="bot-page" id="questionsPage">
+
+                    <div class="bot-greeting">
+                        <h4>Hi there!</h4>
+                        <p>
+                            What would you like to know?
+                        </p>
+                    </div>
+
+                    <div class="question-list">
+
+                        <button
+                            class="question-btn"
+                            data-question="Why don't I enter card details?"
+                            data-answer="Travel Ease connects you with the hotel rather than processing payment ourselves. Confirming your details here saves your booking and gives you a receipt to show when you check in."
+                        >
+                            <span>Why don't I enter card details?</span>
+                            <b>›</b>
+                        </button>
+
+                        <button
+                            class="question-btn"
+                            data-question="Where is my receipt saved?"
+                            data-answer="Your receipt downloads as an image once your booking is confirmed, and the booking itself is saved under My Bookings so you can find it again any time."
+                        >
+                            <span>Where is my receipt saved?</span>
+                            <b>›</b>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="bot-page answer-page" id="answerPage">
+
+                    <button class="back-button" id="backButton">
+                        ← Back
+                    </button>
+
+                    <div class="answer-content">
+
+                        <div class="answer-icon">
+                            <img src="/images/robot.jpg" alt="Travel Ease Assistant">
+                        </div>
+
+                        <p class="answer-question" id="answerQuestion"></p>
+
+                        <div class="answer-line"></div>
+
+                        <p class="answer-text" id="answerText"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="/js/hotel-data.js"></script>
+    <script src="/js/hotel.js"></script>
+    <script src="/js/payment.js"></script>
+    <script src="/js/robot.js"></script>
+
+</body>
+
+</html>
